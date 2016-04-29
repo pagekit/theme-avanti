@@ -8,18 +8,29 @@
 // ========================================================================
 
 @modal-z-index:                                 @global-z-index + 10;
-@modal-background:                              rgba(0,0,0,0.5);
+@modal-background:                              fade(@global-inverted-background, 60%);
 
-@modal-dialog-padding:                          40px;
+@modal-dialog-padding:                          30px;
 @modal-dialog-background:                       @global-background;
 
-@modal-dialog-large-width-large:                1120px;
-
-@modal-header-margin-bottom:                    @modal-dialog-padding;
-
-@modal-footer-margin-top:                       @modal-dialog-padding;
+@modal-header-margin-bottom:                    @global-margin;
+@modal-footer-margin-top:                       @global-margin;
 
 @modal-caption-color:                           @global-contrast-color;
+
+//
+// New
+//
+
+@modal-border-width:                            1px;
+@modal-border:                                  @global-border;
+@modal-header-background:                       @global-light-background;
+@modal-footer-background:                       @modal-header-background;
+
+@modal-close-size:                              42px;
+@modal-close-icon-size:                         24px;
+
+@modal-shadow:                                  0 15px 45px rgba(0,0,0,0.1), 0 5px 20px rgba(0,0,0,0.1);
 
 
 // Component
@@ -31,29 +42,39 @@
 // Sub-object: `uk-modal-dialog`
 // ========================================================================
 
-.hook-modal-dialog() {}
+.hook-modal-dialog() {
+    border-radius: @global-border-radius;
+    box-shadow: @modal-shadow;
+}
 
 
 // Modifier: `uk-modal-dialog-lightbox`
 // ========================================================================
 
-.hook-modal-dialog-lightbox() {}
+.hook-modal-dialog-lightbox() { border-radius: 0; }
 
 
 // Sub-object: `uk-modal-header`
 // ========================================================================
 
-.hook-modal-header() { margin-bottom: @modal-header-margin-bottom; }
+.hook-modal-header() {
+    margin: (-@modal-dialog-padding) (-@modal-dialog-padding) @modal-header-margin-bottom (-@modal-dialog-padding);
+    padding: @modal-dialog-padding;
+    border-bottom: @modal-border-width solid @modal-border;
+    border-radius: @global-border-radius @global-border-radius 0 0;
+    background: @modal-header-background;
+}
 
 
 // Sub-object: `uk-modal-footer`
 // ========================================================================
 
 .hook-modal-footer() {
-    margin: @modal-footer-margin-top -@modal-dialog-padding -@modal-dialog-padding -@modal-dialog-padding !important;
-    padding: 15px @modal-dialog-padding;
-    background: fade(@global-default-background, 30%);
-    border-top: 1px solid @global-border;
+    margin: @modal-footer-margin-top (-@modal-dialog-padding) (-@modal-dialog-padding) (-@modal-dialog-padding);
+    padding: @modal-dialog-padding;
+    border-top: @modal-border-width solid @modal-border;
+    border-radius: 0 0 @global-border-radius @global-border-radius;
+    background: @modal-header-background;
 }
 
 
@@ -74,26 +95,12 @@
 
 .hook-modal-misc() {
 
-    .uk-modal-dialog-lightbox > .uk-close:not(.uk-close-alt):first-child {
-        top: -25px;
-        right: -25px;
+    // Close icon size for uk-modal-blank
+    .uk-modal-dialog-blank .uk-modal-close {
+        width: @modal-close-size;
+        line-height: @modal-close-size;
     }
 
-    .uk-modal-dialog-lightbox > .uk-close:not(.uk-close-alt):after { background: url("@{global-image-path}/close-contrast.svg") 0 0 no-repeat; }
-
-    .uk-modal-dialog-blank > .uk-close:first-child {
-        top: 0;
-        right: 0;
-        width: 50px;
-        opacity: 1;
-    }
-
-    .uk-modal-dialog-blank > .uk-close:first-child:after {
-        width: 50px;
-        height: 50px;
-        background: @global-color url("@{global-image-path}/close-contrast.svg") 50% 50% no-repeat;
-    }
-
-    .uk-modal-dialog-blank > .uk-close:first-child:hover:after { background-color: @global-dark-color; }
+    .uk-modal-dialog-blank .uk-modal-close::after { font-size: @modal-close-icon-size; }
 
 }

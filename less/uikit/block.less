@@ -7,14 +7,30 @@
 // Variables
 // ========================================================================
 
-@block-padding-vertical:                        50px;
-@block-padding-vertical-large:                  100px;
+@block-padding-vertical:                              @global-grid-gutter-large;
+@block-padding-vertical-large:                        60px;
 
-@block-large-padding-vertical-large:            150px;
+@block-large-padding-vertical:                        @block-padding-vertical;
+@block-large-padding-vertical-medium:                 @block-padding-vertical-large;
+@block-large-padding-vertical-large:                  120px;
 
-@block-default-background:                      @global-background;
+@block-default-background:                            @global-background;
+@block-muted-background:                              @global-light-background;
+@block-primary-background:                            @global-primary-background;
+@block-secondary-background:                          @global-secondary-background;
 
-@block-secondary-background:                    #1f1915;
+//
+// New
+//
+
+@block-border-width:                                  @global-border-width;
+@block-border:                                        @global-border;
+@block-muted-border:                                  darken(@block-muted-background, 5%);
+@block-primary-border:                                desaturate(darken(@block-primary-background, 5%), 5%);
+@block-secondary-border:                              lighten(@block-secondary-background, 4%);
+
+@block-primary-color:                                 @global-highlight-color;
+@block-primary-muted-color:                           fade(@global-highlight-color, 40%);
 
 
 // Component
@@ -30,9 +46,52 @@
 
 .hook-block-muted() {}
 
-.hook-block-secondary() {}
+.hook-block-primary() {
 
-.hook-block-primary() {}
+    &:not(.uk-contrast) {
+
+        color: @block-primary-color !important;
+
+        // Text
+        .uk-h1,
+        .uk-h2,
+        .uk-h3,
+        .uk-h3,
+        em,
+        code,
+        blockquote { color: @block-primary-color !important; }
+
+        // Text muted
+        .uk-h5,
+        .uk-h6,
+        .uk-text-muted,
+        blockquote::before,
+        small,
+        cite { color: @block-primary-muted-color !important; }
+
+        .uk-text-primary { color: @global-primary-link-color !important;}
+
+        // Hyperlink
+        > a:not([class]),
+        > :not([class*='uk-nav']) a:not([class]) {
+
+            color: @global-primary-link-color;
+
+            &:hover { color: @global-primary-link-hover-color; }
+
+        }
+
+        // Button Link
+        .uk-button-link { color: @global-primary-link-color; }
+        .uk-button-link:hover { color: @global-primary-link-hover-color; }
+        .uk-button-link:focus { color: @block-primary-color; }
+
+        // Panel title
+        .uk-panel-title { color: @block-primary-color !important; }
+
+    }
+
+}
 
 
 // Miscellaneous
@@ -40,23 +99,16 @@
 
 .hook-block-misc() {
 
-    /* Desktop and bigger */
-    @media (min-width: 2000px) {
-
-        .uk-block-large {
-            padding-top: 200px;
-            padding-bottom: 200px;
-        }
-
-    }
-
-    /*
-     * Adjust padding between equal colored blocks
-     */
-
+    // Adding a border when two blocks of the same style follow each other
     .uk-block-default + .uk-block-default,
     .uk-block-muted + .uk-block-muted,
     .uk-block-primary + .uk-block-primary,
-    .uk-block-secondary + .uk-block-secondary { padding-top: 0; }
+    .uk-block-secondary + .uk-block-secondary { border-top: @block-border-width solid @block-border; }
+
+    .uk-block-muted + .uk-block-muted { border-color: @block-muted-border; }
+
+    .uk-block-primary + .uk-block-primary { border-color: @block-primary-border; }
+
+    .uk-block-secondary + .uk-block-secondary { border-color: @block-secondary-border; }
 
 }

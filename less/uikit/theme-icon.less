@@ -1,0 +1,59 @@
+// Name:            Theme Icons
+// Description:     Defines styles for custom theme icons
+//
+// Component:       `uk-theme-icon-*`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@theme-icon-font-path:                         @global-font-path;
+
+
+// Component
+// ========================================================================
+
+@font-face {
+    font-family: 'theme-icons';
+    src:    url('@{theme-icon-font-path}/theme-icons.eot?wjfxwa');
+    src:    url('@{theme-icon-font-path}/theme-icons.eot?wjfxwa#iefix') format('embedded-opentype'),
+            url('@{theme-icon-font-path}/theme-icons.ttf?wjfxwa') format('truetype'),
+            url('@{theme-icon-font-path}/theme-icons.woff?wjfxwa') format('woff'),
+            url('@{theme-icon-font-path}/theme-icons.svg?wjfxwa#theme-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="uk-theme-icon-"],
+[class*=" uk-theme-icon-"] {
+    font-family: 'theme-icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Icons
+.uk-theme-icon-slider-left:before { content: "\e901"; }
+.uk-theme-icon-slider-right:before { content: "\e902"; }
+.uk-theme-icon-slider-top:before { content: "\e903"; }
+.uk-theme-icon-more:before { content: "\e900"; }
+.uk-theme-icon-search:before { content: "\e036"; }
+.uk-theme-icon-author:before { content: "\e074"; }
+.uk-theme-icon-comment:before { content: "\e076"; }
+.uk-theme-icon-tag:before { content: "\e085"; }
+.uk-theme-icon-arrow-left:before { content: "\e094"; }
+.uk-theme-icon-arrow-right:before { content: "\e095"; }
+.uk-theme-icon-arrow-up:before { content: "\e096"; }
+.uk-theme-icon-arrow-down:before { content: "\e097"; }
+.uk-theme-icon-plus:before { content: "\e114"; }
+.uk-theme-icon-minus:before { content: "\e115"; }
+.uk-theme-icon-check:before { content: "\e116"; }
+.uk-theme-icon-cross:before { content: "\e117"; }
+.uk-theme-icon-menu:before { content: "\e120"; }

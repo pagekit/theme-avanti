@@ -7,41 +7,63 @@
 // Variables
 // ========================================================================
 
+@progress-height:                               24px;
+@progress-mini-height:                          6px;
+@progress-small-height:                         12px;
+
 @progress-margin-vertical:                      @global-margin;
-@progress-background:                           @global-default-background;
+@progress-background:                           @global-light-background;
 
 @progress-bar-background:                       @global-primary-background;
-@progress-bar-font-size:                        round((@global-font-size * 0.85)); // 12px / 14px
+@progress-bar-font-size:                        12px;
 @progress-bar-color:                            @global-contrast-color;
 
 @progress-bar-success-background:               @global-success-background;
 @progress-bar-warning-background:               @global-warning-background;
 @progress-bar-danger-background:                @global-danger-background;
 
+//
+// New
+//
+
+@progress-border-radius:                        @global-border-radius;
+@progress-success-color:                        @global-contrast-color;
+@progress-warning-color:                        @global-contrast-color;
+@progress-danger-color:                         @global-contrast-color;
+
 
 // Component
 // ========================================================================
 
-.hook-progress() { border-radius: 500px; }
+.hook-progress() { border-radius: @progress-border-radius; }
 
 
 // Sub-object: `progress-bar`
 // ========================================================================
 
-.hook-progress-bar() {}
+.hook-progress-bar() {
+    border-radius: @progress-border-radius;
+    line-height: @progress-height;
+}
 
 
 // Color modifiers
 // ========================================================================
 
-.hook-progress-bar-success() {}
+.hook-progress-bar-success() { color: @progress-success-color; }
 
-.hook-progress-bar-warning() {}
+.hook-progress-bar-warning() { color: @progress-warning-color; }
 
-.hook-progress-bar-danger() {}
+.hook-progress-bar-danger() { color: @progress-danger-color; }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-progress-misc() {}
+.hook-progress-misc() {
+
+    // Size modifiers
+    .uk-progress-mini,
+    .uk-progress-small { border-radius: @global-border-radius; }
+
+}

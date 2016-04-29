@@ -3,36 +3,119 @@
 //
 // ========================================================================
 
-@contrast-color:                                 @global-contrast-color;
-@contrast-inverted-color:                        #333;
 
-@contrast-tab-hover-background:                  none;
-@contrast-tab-hover-color:                       @contrast-color;
-@contrast-tab-active-background:                 none;
-@contrast-tab-active-color:                      @contrast-color;
+// Variables
+// ========================================================================
 
-@contrast-button-color:                          @contrast-color;
-@contrast-button-background:                     rgba(0,0,0,0);
-@contrast-button-hover-color:                    @global-dark-color;
-@contrast-button-hover-background:               @contrast-color;
-@contrast-button-active-background:              @contrast-color;
-@contrast-button-active-color:                   @global-dark-color;
+@contrast-color:                                @global-secondary-color;
+@contrast-inverted-color:                       @global-secondary-inverted-color;
+
+@contrast-base-color:                           @contrast-color;
+
+@contrast-base-link-color:                      @global-link-color;
+@contrast-base-link-text-decoration:            none;
+
+@contrast-base-code-color:                      @contrast-color;
+@contrast-base-em-color:                        @contrast-color;
+
+@contrast-base-heading-color:                   @contrast-highlight-color;
+
+@contrast-base-hr-border:                       @contrast-border;
+
+@contrast-nav-side-color:                       @contrast-color;
+@contrast-nav-side-hover-background:            @contrast-border;
+@contrast-nav-side-hover-color:                 @contrast-highlight-color;
+@contrast-nav-side-active-background:           @global-primary-background;
+@contrast-nav-side-active-color:                @contrast-highlight-color;
+@contrast-nav-side-header-color:                fade(@contrast-color, 70%);
+@contrast-nav-side-divider-border:              @contrast-border;
+@contrast-nav-side-nested-color:                fade(@contrast-color, 70%);
+@contrast-nav-side-nested-hover-color:          @contrast-color;
+
+@contrast-subnav-color:                         @contrast-color;
+@contrast-subnav-hover-color:                   @contrast-highlight-color;
+@contrast-subnav-hover-text-decoration:         none;
+@contrast-subnav-active-color:                  @contrast-highlight-color;
+
+@contrast-subnav-line-border:                   @contrast-border;
+
+@contrast-subnav-pill-hover-background:         @contrast-border;
+@contrast-subnav-pill-hover-color:              @contrast-color;
+@contrast-subnav-pill-active-background:        @global-primary-background;
+@contrast-subnav-pill-active-color:             @contrast-highlight-color;
+
+@contrast-tab-border:                           @contrast-border;
+@contrast-tab-color:                            @contrast-color;
+@contrast-tab-hover-border:                     @contrast-highlight-color;
+@contrast-tab-hover-background:                 rgba(0,0,0,0);
+@contrast-tab-hover-color:                      @contrast-highlight-color;
+@contrast-tab-active-border:                    @global-primary-background;
+@contrast-tab-active-background:                @contrast-tab-hover-background;
+@contrast-tab-active-color:                     @contrast-highlight-color;
+
+@contrast-list-line-border:                     @contrast-border;
+
+@contrast-form-border:                          @contrast-border;
+@contrast-form-background:                      rgba(0,0,0,0);
+@contrast-form-color:                           @contrast-color;
+@contrast-form-focus-border:                    fade(@contrast-color, 30%);
+@contrast-form-focus-background:                rgba(0,0,0,0);
+@contrast-form-focus-color:                     @contrast-highlight-color;
+
+@contrast-form-placeholder-color:               fade(@contrast-color, 50%);
+
+@contrast-button-background:                    @contrast-border;
+@contrast-button-color:                         @contrast-color;
+@contrast-button-hover-background:              fade(@contrast-color, 20%);
+@contrast-button-hover-color:                   @contrast-highlight-color;
+@contrast-button-active-background:             @contrast-highlight-color;
+@contrast-button-active-color:                  @contrast-inverted-color;
+
+@contrast-button-primary-background:            @global-primary-background;
+@contrast-button-primary-color:                 @contrast-highlight-color;
+@contrast-button-primary-hover-background:      @global-primary-hover-background;
+@contrast-button-primary-hover-color:           @contrast-highlight-color;
+@contrast-button-primary-active-background:     @global-primary-active-background;
+@contrast-button-primary-active-color:          @contrast-inverted-color;
+
+@contrast-icon-button-background:               @contrast-border;
+@contrast-icon-button-color:                    @contrast-color;
+@contrast-icon-button-hover-background:         fade(@contrast-color, 20%);
+@contrast-icon-button-hover-color:              @contrast-highlight-color;
+@contrast-icon-button-active-background:        @global-primary-background;
+@contrast-icon-button-active-color:             @contrast-highlight-color;
+
+@contrast-icon-hover-color:                     @contrast-color;
+@contrast-icon-hover-hover-color:               @contrast-highlight-color;
+
+@contrast-text-muted-color:                     fade(@contrast-color, 50%);
+@contrast-text-primary-color:                   @global-primary-color;
 
 //
 // New
 //
 
-@contrast-button-border:                         @contrast-color;
-@contrast-button-hover-border:                   fade(@contrast-color, 70%);
+@contrast-highlight-color:                      @global-secondary-highlight-color;
+
+@contrast-border:                               fade(@contrast-color, 10%);
+@contrast-background:                           fade(@contrast-color, 10%);
+
+@contrast-button-link-color:                    @contrast-text-primary-color;
+@contrast-button-link-hover-color:              @contrast-highlight-color;
+@contrast-button-link-active-color:             @contrast-color;
+
+@contrast-accordion-title-color:                @contrast-text-primary-color;
+@contrast-accordion-title-hover-color:          @contrast-highlight-color;
+@contrast-accordion-title-onclick-color:        @contrast-color;
+@contrast-accordion-title-active-color:         @contrast-highlight-color;
+
+@contrast-text-shadow:                          none;
 
 
 // Base
 // ========================================================================
 
-.hook-contrast-base-code() {
-    border-color: fade(@contrast-color, 20%);
-    background: fade(@contrast-color, 10%);
-}
+.hook-contrast-base-code() { background: fade(@global-light-background, 10%); }
 
 
 // Nav
@@ -55,13 +138,20 @@
 .hook-contrast-subnav-pill-hover() {}
 .hook-contrast-subnav-pill-active() {}
 
-
 // Tab
 // ========================================================================
 
-.hook-contrast-tab() {}
+.hook-contrast-tab() {
+
+    &::after { border-bottom-color: @contrast-tab-hover-border; }
+
+}
 .hook-contrast-tab-hover() {}
-.hook-contrast-tab-active() {}
+.hook-contrast-tab-active() {
+
+    &::after { border-bottom-color: @contrast-tab-active-border; }
+
+}
 
 
 // List
@@ -80,23 +170,12 @@
 // Button
 // ========================================================================
 
-.hook-contrast-button() {
-
-    &:not(.uk-button-primary) { border-color: @contrast-button-border; }
-
-}
-
-.hook-contrast-button-hover() {
-
-    &:not(.uk-button-primary) { border-color: @contrast-button-hover-border; }
-
-}
-
-.hook-contrast-button-active() {}
+.hook-contrast-button() {}
+.hook-contrast-button-hover() {}
+.hook-contrast-button-active() { box-shadow: none; }
 .hook-contrast-button-primary() {}
-
 .hook-contrast-button-primary-hover() {}
-.hook-contrast-button-primary-active() {}
+.hook-contrast-button-primary-active() { box-shadow: none; }
 
 
 // Icon
@@ -105,11 +184,199 @@
 .hook-contrast-icon-hover() {}
 .hook-contrast-icon-hover-hover() {}
 .hook-contrast-icon-button() {}
-.hook-contrast-icon-button-hover() {}
-.hook-contrast-icon-button-active() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-contrast-misc() {}
+.hook-contrast-misc() {
+
+    text-shadow: @contrast-text-shadow;
+
+    // Accordion
+    // ========================================================================
+
+    .uk-accordion-title,
+    .uk-accordion-title::before { color: @contrast-accordion-title-color; }
+
+    .uk-accordion-title:hover,
+    .uk-accordion-title:hover::before { color: @contrast-accordion-title-hover-color; }
+
+    .uk-accordion-title:active,
+    .uk-accordion-title:active::before { color: @contrast-accordion-title-onclick-color; }
+
+    .uk-accordion-title.uk-active,
+    .uk-accordion-title.uk-active::before { color: @contrast-accordion-title-active-color; }
+
+    // Base
+    // ========================================================================
+
+    .uk-h5 { color: @contrast-color; }
+    .uk-h6 { color: @contrast-color; }
+
+    pre {
+        border-color: @contrast-border;
+        background-color: @contrast-background;
+        color: @contrast-color;
+    }
+
+    blockquote { color: @contrast-highlight-color; }
+    blockquote::before { color: @contrast-color; }
+
+    // Button
+    // ========================================================================
+
+    // Button Link
+    .uk-button-link,
+    .uk-button-link:hover,
+    .uk-button-link:active,
+    .uk-button-link:focus, {
+        background: none;
+        box-shadow: none;
+        outline: none;
+        text-decoration: none;
+    }
+
+    .uk-button-link { color: @contrast-button-link-color; }
+
+    .uk-button-link:hover,
+    .uk-button-link:focus { color: @contrast-button-link-hover-color; }
+
+    .uk-button-link:active,
+    .uk-button-link.uk-active { color: @contrast-button-link-active-color; }
+
+    // Comment
+    // ========================================================================
+
+    .uk-comment-header {
+        border-color: @contrast-border;
+        background: @contrast-background;
+        box-shadow: none;
+    }
+
+    // Description List
+    // ========================================================================
+
+    .uk-description-list-line > dt:nth-child(n+2) { border-top-color: @contrast-border; }
+
+    // Form
+    // ========================================================================
+
+    .uk-form legend::after { border-bottom-color: @contrast-border; }
+
+    // Reseting -webkit- autofill styling in Chrome browser
+    .uk-form input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px @form-height @contrast-form-background inset !important;
+        border-color: @contrast-form-border !important;
+        -webkit-text-fill-color: @contrast-form-placeholder-color
+    }
+
+    .uk-form input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px @form-height @contrast-form-background inset !important;
+        border-color: @contrast-form-focus-border !important;
+        -webkit-text-fill-color: @contrast-form-focus-color;
+    }
+
+    // Grid
+    // ========================================================================
+
+    // Grid Divider
+    .uk-grid-divider > [class*='uk-width-1-']:not(.uk-width-1-1):nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-2-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-3-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-4-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-5-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-6-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-7-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-8-']:nth-child(n+2),
+    .uk-grid-divider > [class*='uk-width-9-']:nth-child(n+2) { border-left-color: @contrast-border; }
+
+    @media (min-width: @breakpoint-medium) {
+
+        .uk-grid-divider > [class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) { border-left-color: @contrast-border; }
+
+    }
+
+    @media (min-width: @breakpoint-large) {
+
+        .uk-grid-divider > [class*='uk-width-large-']:not(.uk-width-large-1-1):nth-child(n+2) { border-left-color: @contrast-border; }
+
+    }
+
+    .uk-grid-divider:empty { border-top-color: @contrast-border; }
+
+    // List
+    // ========================================================================
+
+    .uk-list-striped > li:nth-of-type(odd) { background: @contrast-background; }
+
+
+    // Pagination
+    // ========================================================================
+
+    .uk-pagination > li > a {
+        background: @contrast-button-background;
+        color: @contrast-button-color;
+    }
+
+    .uk-pagination > li > a:hover,
+    .uk-pagination > li > a:focus {
+        background-color: @contrast-button-hover-background;
+        color: @contrast-button-hover-color;
+    }
+
+    .uk-pagination > li > a:active {
+        background-color: @contrast-button-active-background;
+        color: @contrast-button-active-color;
+    }
+
+    .uk-pagination > .uk-active > span {
+        background: @contrast-button-active-background;
+        color: @contrast-button-active-color;
+    }
+
+    .uk-pagination > .uk-disabled > span {
+        background-color: @contrast-background;
+        color: @contrast-text-muted-color;
+    }
+
+    // Panel
+    // ========================================================================
+
+    // Panel-title
+    .uk-panel:not(.uk-panel-box) .uk-panel-title { color: @contrast-highlight-color; }
+
+    // uk-panel title color
+    .uk-panel:not([class*='uk-panel-box']) > .uk-panel-title  { color: @contrast-base-heading-color; }
+
+    // uk-panel-header
+    .uk-panel-header .uk-panel-title::after { border-bottom-color: @contrast-border; }
+
+    // uk-panel-divider
+    .uk-panel + .uk-panel-divider::before { border-top-color: @contrast-border; }
+
+    // Progress
+    // ========================================================================
+
+    .uk-progress { background: @contrast-background; }
+
+    // Table
+    // ========================================================================
+
+    .uk-table th,
+    .uk-table td { border-color: @contrast-border; }
+
+    .uk-table { border-color: @contrast-border; }
+
+    .uk-table tbody tr.uk-active { background: @contrast-background; }
+    .uk-table-striped tbody tr:nth-of-type(odd) { background: @contrast-background; }
+    .uk-table-hover tbody tr:hover { background: fade(@contrast-color, 20%); }
+
+    // Text
+    // ========================================================================
+
+    // Link muted
+    .uk-link-muted,
+    .uk-link-muted a { color: @contrast-text-muted-color; }
+
+}

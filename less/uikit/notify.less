@@ -9,23 +9,34 @@
 
 @notify-z-index:                                @global-z-index + 40;
 
+@notify-message-font-size:                      11px;
+@notify-message-line-height:                    @global-line-height;
+
 @notify-message-margin-bottom:                  15px;
-@notify-message-background:                     @global-default-background;
+@notify-message-padding:                        15px;
+@notify-message-background:                     @global-light-background;
 @notify-message-color:                          @global-color;
-@notify-message-font-size:                      16px;
-@notify-message-line-height:                    round((@notify-message-font-size * 1.37)); // 22px
 
-@notify-message-primary-background:             @notify-message-background;
-@notify-message-primary-color:                  @global-link-color;
+@notify-message-primary-background:             @global-primary-background;
+@notify-message-primary-color:                  @global-contrast-color;
 
-@notify-message-success-background:             @notify-message-background;
-@notify-message-success-color:                  @global-success-background;
+@notify-message-success-background:             @global-success-background;
+@notify-message-success-color:                  @global-contrast-color;
 
-@notify-message-warning-background:             @notify-message-background;
-@notify-message-warning-color:                  #ff9a2e;
+@notify-message-warning-background:             @global-warning-background;
+@notify-message-warning-color:                  @global-contrast-color;
 
-@notify-message-danger-background:              @notify-message-background;
-@notify-message-danger-color:                   @global-danger-background;
+@notify-message-danger-background:              @global-danger-background;
+@notify-message-danger-color:                   @global-contrast-color;
+
+//
+// New
+//
+
+@notify-message-border-radius:                  @global-border-radius;
+@notify-message-font-family:                    @global-alternate-font-family;
+@notify-message-text-transform:                 @global-text-transform;
+@notify-message-letter-spacing:                 @global-letter-spacing;
 
 
 // Component
@@ -34,8 +45,10 @@
 .hook-notify() {}
 
 .hook-notify-message() {
-    border-radius: 4px;
-    font-weight: 300;
+    border-radius: @notify-message-border-radius;
+    font-family: @notify-message-font-family;
+    text-transform: @notify-message-text-transform;
+    letter-spacing: @notify-message-letter-spacing;
 }
 
 .hook-notify-message-primary() {}

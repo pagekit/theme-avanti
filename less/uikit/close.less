@@ -7,25 +7,52 @@
 // Variables
 // ========================================================================
 
-@close-size:                                    18px;
+@close-size:                                    20px;
+@close-alt-padding:                             0;
 
-@close-alt-padding:                             6px;
-@close-alt-background:                          @global-background;
+@close-alt-background:                          @global-inverted-background;
+
+//
+// New
+//
+
+@close-icon:                                    '\e117';
+@close-icon-size:                               13px;
+@close-color:                                   @global-highlight-color;
+@close-opacity:                                 1;
+@close-hover-opacity:                           0.7;
+
+@close-alt-size:                                26px;
+@close-alt-color:                               @global-contrast-color;
+@close-alt-hover-background:                    @global-primary-background;
+@close-alt-hover-color:                         @close-alt-color;
+@close-alt-opacity:                             1;
+@close-alt-hover-opacity:                       1;
 
 
 // Component
 // ========================================================================
 
 .hook-close() {
-    opacity: 0.5;
-    color: @global-contrast-color;
+    color: @close-color;
+    background: none;
+    opacity: @close-opacity;
+    -webkit-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
 }
 
 
 // Modifier: `uk-close-alt`
 // ========================================================================
 
-.hook-close-alt() {}
+.hook-close-alt() {
+    width: @close-alt-size;
+    line-height: @close-alt-size !important;
+    border-radius: round((@close-alt-size / 2));
+    opacity: @close-alt-opacity;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
 
 
 // Miscellaneous
@@ -33,14 +60,33 @@
 
 .hook-close-misc() {
 
-    .uk-close:after {
-        content: "";
-        width: @close-size;
-        height: @close-size;
-        background: url("@{global-image-path}/close.svg") 50% 50% no-repeat;
+    // Close modifications
+    .uk-close::after {
+        content: @close-icon;
+        font-family: @global-theme-icon-font-family;
+        font-size: @close-icon-size;
+        -webkit-transition: @global-transition;
+        transition: @global-transition;
     }
 
+    // Hover
     .uk-close:hover,
-    .uk-close:focus { opacity: 1; }
+    .uk-close:focus { opacity: @close-hover-opacity; }
+
+    // Close Alt modifications
+    .uk-close-alt:hover { background: @close-alt-hover-background; }
+
+    .uk-close-alt:hover,
+    .uk-close-alt:focus { opacity: @close-alt-opacity; }
+
+    .uk-close-alt::after {
+        color: @close-alt-color;
+        opacity: @close-alt-opacity;
+    }
+
+    .uk-close-alt:hover::after {
+        color: @close-alt-hover-color;
+        opacity: @close-alt-hover-opacity;
+    }
 
 }

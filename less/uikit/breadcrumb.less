@@ -7,36 +7,39 @@
 // Variables
 // ========================================================================
 
-@breadcrumb-font-size:                          round((@global-font-size * 0.85)); // 12px / 14px
+@breadcrumb-font-size:                          11px;
 
-@breadcrumb-disabled-color:                     fade(@global-muted-color, 50%);
-@breadcrumb-divider-margin:                     12px;
+@breadcrumb-disabled-color:                     @global-muted-color;
+@breadcrumb-divider-margin:                     20px;
+@breadcrumb-divider:                            "//";
+
+//
+// New
+//
+
+@breadcrumb-divider-color:                      fade(@global-muted-color, 30%);
+@breadcrumb-font-family:                        @global-alternate-font-family;
+@breadcrumb-text-transform:                     @global-text-transform;
+@breadcrumb-letter-spacing:                     @global-letter-spacing;
 
 
 // Component
 // ========================================================================
 
 .hook-breadcrumb() {
-    color: @global-muted-color;
-    text-transform: uppercase;
+    font-family: @breadcrumb-font-family;
+    text-transform: @breadcrumb-text-transform;
+    letter-spacing: @breadcrumb-letter-spacing;
 }
 
 
 // Items
 // ========================================================================
 
-.hook-breadcrumb-divider() { color: @global-muted-color; }
+.hook-breadcrumb-divider() { color: @breadcrumb-divider-color; }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-breadcrumb-misc() {
-
-    .uk-breadcrumb > li > a { color: @global-muted-color; }
-    .uk-breadcrumb > li > a:hover {
-        color: @global-color;
-        text-decoration: none;
-    }
-
-}
+.hook-breadcrumb-misc() {}

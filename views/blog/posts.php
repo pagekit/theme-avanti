@@ -1,34 +1,34 @@
 <?php $view->script('posts', 'blog:app/bundle/posts.js', 'vue') ?>
 
-<div class="tm-container-small">
-
     <?php foreach ($posts as $post) : ?>
-    <article class="uk-article">
+    <article class="uk-article tm-article-blog">
 
-        <?php if ($image = $post->get('image.src')): ?>
-        <a class="uk-display-block" href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><img src="<?= $image ?>" alt="<?= $post->get('image.alt') ?>"></a>
-        <?php endif ?>
+        <h1 class="uk-article-title tm-article-title uk-text-center"><a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a></h1>
 
-        <h1 class="uk-article-title"><a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a></h1>
-
-        <p class="uk-article-meta">
+        <p class="uk-article-meta tm-article-meta uk-text-center">
             <?= __('Written by %name% on %date%', ['%name%' => $post->user->name, '%date%' => '<time datetime="'.$post->date->format(\DateTime::W3C).'" v-cloak>{{ "'.$post->date->format(\DateTime::W3C).'" | date "longDate" }}</time>' ]) ?>
         </p>
 
-        <div class="uk-margin"><?= $post->excerpt ?: $post->content ?></div>
+        <?php if ($image = $post->get('image.src')): ?>
+        <div class="tm-article-image tm-article-image-large uk-position-relative" style="background: url('<?= $view->url($image) ?>') #FFF 50% 50% no-repeat; background-size: cover;">
+            <a class="uk-position-cover" href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>">
+                <img class="uk-invisible" src="<?= $image ?>" alt="<?= $post->get('image.alt') ?>">
+            </a>
+        </div>
+        <?php endif ?>
 
-        <div class="uk-margin-large-top">
+        <div class="tm-article-content uk-margin"><?= $post->excerpt ?: $post->content ?></div>
+
+        <div class="uk-margin-large-top uk-text-center">
             <ul class="uk-subnav uk-margin-bottom-remove">
-
                 <?php if (isset($post->readmore) && $post->readmore || $post->excerpt) : ?>
-                <li><a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= __('Read more') ?></a></li>
+                <a class="uk-button uk-button-link" href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= __('Read more') ?></a>
                 <?php endif ?>
 
                 <?php if ($post->isCommentable() || $post->comment_count) : ?>
-                <li><a href="<?= $view->url('@blog/id#comments', ['id' => $post->id]) ?>"><?= _c('{0} No comments|{1} %num% Comment|]1,Inf[ %num% Comments', $post->comment_count, ['%num%' => $post->comment_count]) ?></a></li>
+                <a class="uk-button uk-button-link" href="<?= $view->url('@blog/id#comments', ['id' => $post->id]) ?>"><?= _c('{0} No comments|{1} %num% Comment|]1,Inf[ %num% Comments', $post->comment_count, ['%num%' => $post->comment_count]) ?></a>
                 <?php endif ?>
 
-            </ul>
         </div>
 
     </article>
@@ -78,5 +78,3 @@
 
     </ul>
     <?php endif ?>
-
-</div>

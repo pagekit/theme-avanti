@@ -18,6 +18,8 @@
                     <option value="uk-h2 uk-margin-top-remove">{{ 'H2' | trans }}</option>
                     <option value="uk-h3 uk-margin-top-remove">{{ 'H3' | trans }}</option>
                     <option value="uk-h4 uk-margin-top-remove">{{ 'H4' | trans }}</option>
+                    <option value="uk-h5 uk-margin-top-remove">{{ 'H5' | trans }}</option>
+                    <option value="uk-h6 uk-margin-top-remove">{{ 'H6' | trans }}</option>
                     <option value="uk-heading-large uk-margin-top-remove">Extra Large</option>
                 </select>
             </div>

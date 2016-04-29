@@ -1,0 +1,274 @@
+@import 'https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700';
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
+
+
+// Global variables
+// ========================================================================
+
+//
+// Text
+//
+
+@global-color:                                  #666;
+@global-muted-color:                            #aaa;
+@global-highlight-color:                        #f44336;
+
+@global-link-color:                             #00bcd4;
+@global-link-hover-color:                       darken(@global-link-color, 10%);
+
+@global-contrast-color:                         #fff;
+
+@global-primary-color:                          @global-link-color;
+@global-primary-link-color:                     rgba(0,0,0,0.6);
+@global-primary-link-hover-color:               lighten(@global-link-hover-color, 10%);
+
+@global-secondary-color:                        fade(@global-contrast-color, 70%);
+@global-secondary-highlight-color:              @global-contrast-color;
+@global-secondary-inverted-color:               rgba(0,0,0,0.6);
+
+@global-success-color:                          #73d153;
+@global-warning-color:                          #ffa00a;
+@global-danger-color:                           #ff0a49;
+
+//
+// Typography
+//
+
+@global-font-size:                              16px;
+@global-line-height:                            26px;
+@global-font-family:                            'Quattrocento Sans', Helvetica, Arial, sans-serif;
+@global-alternate-font-family:                  'Montserrat', Helvetica, Arial, sans-serif;
+@global-text-transform:                         uppercase;
+@global-heading-text-transform:                 @global-text-transform;
+
+//
+// Backgrounds & Borders
+//
+
+@global-light-background:                       #fcfcfc;
+@global-dark-background:                        #fafafa;
+@global-secondary-background:                   #00bcd4;
+@global-inverted-background:                    #e62f21;
+
+@global-default-hover-background:               darken(@global-default-background, 3%);
+@global-default-active-background:              darken(@global-default-background, 5%);
+@global-default-active-shadow:                  rgba(0,0,0,0.1);
+
+@global-primary-background:                     #f44336;
+@global-success-background:                     #73d153;
+@global-warning-background:                     #ffa00a;
+@global-danger-background:                      #ff0a49;
+
+@global-border:                                 rgba(0,0,0,0.06);
+
+//
+// Misc
+//
+
+@global-style:                                  'colorful';
+
+
+// Component variables
+// ========================================================================
+
+//
+// Base
+//
+
+@base-heading-font-family:                      'Quattrocento Sans', Helvetica, Arial, sans-serif;
+@base-alternate-heading-font-family:            'Montserrat', Helvetica, Arial, sans-serif;
+
+@base-blockquote-icon-size:                     90px;
+@base-blockquote-icon-offset:                   -(round(@base-blockquote-icon-size - 20));
+
+//
+// Block
+//
+
+@block-primary-color:                           @global-contrast-color;
+@block-primary-muted-color:                     fade(@global-contrast-color, 60%);
+
+//
+// Contrast
+//
+
+@contrast-base-link-color:                      @global-secondary-inverted-color;
+
+@contrast-text-primary-color:                   @global-contrast-color;
+
+@contrast-button-link-color:                    @global-contrast-color;
+@contrast-button-link-hover-color:              fade(@contrast-button-link-color, 70%);
+@contrast-button-link-active-color:             @global-secondary-inverted-color;
+
+@contrast-accordion-title-color:                fade(@global-contrast-color, 70%);
+@contrast-accordion-title-hover-color:          @global-contrast-color;
+@contrast-accordion-title-onclick-color:        @global-secondary-inverted-color;
+@contrast-accordion-title-active-color:         @global-contrast-color;
+
+@contrast-text-shadow:                          1px 2px 3px rgba(0,0,0,0.13);
+
+//
+// Dotnav
+//
+
+@dotnav-onclick-background:                     @global-highlight-color;
+@dotnav-border:                                 fade(@global-color, 40%);
+@dotnav-hover-border:                           @global-highlight-color;
+@dotnav-onclick-border:                         @global-highlight-color;
+@dotnav-active-border:                          @global-highlight-color;
+
+//
+// Dropdown
+//
+
+@dropdown-navbar-background:                    fade(#ff734e, 98%);
+@dropdown-shadow:                               0 1px 3px rgba(0,0,0,0.15);
+@dropdown-navbar-shadow:                        @dropdown-shadow;
+
+@dropdown-navbar-panel-link-color:              @global-contrast-color;
+@dropdown-navbar-panel-link-hover-color:        fade(@dropdown-navbar-panel-link-color, 85%);
+
+//
+// Form
+//
+
+@form-focus-border:                             @global-primary-background;
+
+//
+// Nav
+//
+
+@nav-navbar-color:                              #ffd7c1;
+@nav-navbar-hover-color:                        @global-contrast-color;
+@nav-navbar-header-color:                       fade(@nav-navbar-color, 80%);
+@nav-navbar-divider-border:                     fade(@nav-navbar-color, 30%);
+@nav-navbar-nested-color:                       @nav-navbar-color;
+@nav-navbar-nested-hover-color:                 @global-contrast-color;
+
+@nav-navbar-active-color:                       @global-contrast-color;
+
+@nav-offcanvas-color:                           #ffad98;
+@nav-offcanvas-hover-background:                #f9613a;
+@nav-offcanvas-hover-color:                     @global-contrast-color;
+@nav-offcanvas-header-color:                    @global-contrast-color;
+@nav-offcanvas-divider-border:                  rgba(255,255,255,0.1);
+@nav-offcanvas-nested-color:                    @nav-offcanvas-color;
+@nav-offcanvas-nested-hover-color:              @global-contrast-color;
+
+@nav-offcanvas-shadow:                          0 2px 4px fade(darken(@offcanvas-bar-background, 30%), 20%);
+
+//
+// Navbar
+//
+
+@navbar-background:                             #f9613a;
+@navbar-color:                                  #ffd7c1;
+
+@navbar-nav-color:                              @navbar-color;
+@navbar-nav-hover-color:                        @global-contrast-color;
+@navbar-nav-onclick-color:                      fade(darken(@navbar-background, 50%), 60%);
+@navbar-nav-active-color:                       @global-contrast-color;
+
+@navbar-brand-color:                            @global-contrast-color;
+@navbar-brand-hover-color:                      @navbar-color;
+
+@navbar-shadow:                                 0 9px 20px rgba(0,0,0,0.06), 0 2px 3px rgba(0,0,0,0.04);
+
+//
+// Offcanvas
+//
+@offcanvas-background:                          fade(darken(@offcanvas-bar-background, 30%), 50%);
+
+@offcanvas-panel-color:                         #ffad98;
+@offcanvas-panel-title-color:                   @global-contrast-color;
+@offcanvas-panel-link-color:                    @global-contrast-color;
+@offcanvas-panel-link-hover-color:              fade(@offcanvas-panel-link-color, 70%);
+
+@offcanvas-after-background:                    fade(darken(@offcanvas-bar-background, 30%), 20%);
+@offcanvas-after-shadow:                        fade(darken(@offcanvas-bar-background, 30%), 20%);
+
+//
+// Panel
+//
+
+@panel-box-primary-background:                  @global-primary-background;
+@panel-box-primary-color:                       fade(@global-contrast-color, 80%);
+@panel-box-primary-hover-color:                 fade(@panel-box-primary-color, 90%);
+@panel-box-primary-title-color:                 @global-contrast-color;
+
+@panel-box-secondary-background:                @global-secondary-background;
+@panel-box-secondary-color:                     @global-secondary-color;
+@panel-box-secondary-hover-color:               fade(@panel-box-secondary-color, 90%);
+@panel-box-secondary-title-color:               @global-secondary-highlight-color;
+@panel-box-secondary-link-color:                @global-primary-link-color;
+@panel-box-secondary-link-hover-color:          @global-primary-link-hover-color;
+
+//
+// Search
+//
+
+@navbar-search-placeholder-color:               @navbar-nav-color;
+
+@dropdown-search-background:                    @dropdown-navbar-background;
+@dropdown-search-color:                         @navbar-nav-color;
+
+@search-dropdown-shadow:                        @dropdown-navbar-shadow;
+
+@nav-search-color:                              @navbar-nav-color;
+@nav-search-active-color:                       @navbar-nav-hover-color;
+@nav-search-header-color:                       @navbar-nav-color;
+@nav-search-nested-color:                       @navbar-nav-color;
+@nav-search-nested-hover-color:                 @navbar-nav-hover-color;
+
+@offcanvas-search-background:                   #f9613a;
+@offcanvas-search-placeholder-color:            @offcanvas-panel-color;
+@offcanvas-search-icon-color:                   @global-contrast-color;
+
+@offcanvas-search-shadow:                       @nav-offcanvas-shadow;
+
+//
+// Overlay
+//
+
+@overlay-gradient-top:                          fade(@global-light-background, 40%);
+@overlay-gradient-bottom:                       fade(@global-light-background, 100%);
+
+//
+// Slidenav
+//
+
+@slidenav-color:                                @global-color;
+@slidenav-hover-color:                          @global-highlight-color;
+@slidenav-active-color:                         @global-highlight-color;
+
+
+// Theme variables
+// ========================================================================
+
+//
+// Body & Block Backgrounds
+//
+
+@theme-body-background:                         @global-primary-background;
+
+//
+// Navbar
+//
+
+@theme-navbar-icon-color:                       @global-contrast-color;
+
+@theme-navbar-icon-click-color:                 @global-primary-link-color;
+
+//
+// Footer
+//
+
+@theme-footer-totop-active-color:               @global-secondary-inverted-color;
+
+//
+// Widgetkit Gallery modifier 'tm-gallery-avanti'
+//
+
+@theme-overlay-secondary-background:            @global-secondary-background;
+@theme-overlay-secondary-gradient-top:          fade(@theme-overlay-secondary-background, 100%);
+@theme-overlay-secondary-gradient-bottom:       fade(@theme-overlay-secondary-background, 40%);

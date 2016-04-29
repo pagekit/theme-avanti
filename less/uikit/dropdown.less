@@ -7,42 +7,49 @@
 // Variables
 // ========================================================================
 
-@dropdown-z-index:                              @global-z-index + 20;
+@dropdown-z-index:                              (@global-z-index + 20);
 @dropdown-margin-top:                           10px;
-@dropdown-padding:                              25px;
-@dropdown-background:                           #fff;
+@dropdown-width:                                200px;
+@dropdown-background:                           @global-light-background;
 @dropdown-color:                                @global-color;
-@dropdown-font-size:                            14px;
+@dropdown-animation:                            uk-slide-bottom-fixed;
 
 @dropdown-divider-border:                       @global-border;
+@dropdown-divider-border-width:                 @global-border-width;
 
-@dropdown-small-padding:                        @dropdown-padding;
+@dropdown-navbar-margin:                        -(@global-grid-gutter-small);
+@dropdown-navbar-background:                    fade(@global-inverted-background, 98%);
+@dropdown-navbar-color:                         @global-secondary-color;
+@dropdown-navbar-animation:                     uk-slide-bottom-fixed;
 
-@dropdown-navbar-margin:                        20px;
-@dropdown-navbar-background:                    #fff;
-@dropdown-navbar-color:                         @global-color;
-@dropdown-navbar-animation:                     uk-fade;
+//
+// New
+//
+
+@dropdown-border-radius:                        @global-border-radius;
+
+@dropdown-navbar-divider-border:                rgba(255,255,255,0.06);
+
+@dropdown-navbar-panel-link-color:              @global-link-color;
+@dropdown-navbar-panel-link-hover-color:        @global-link-hover-color;
+
+@dropdown-shadow:                               0 15px 45px rgba(0,0,0,0.1), 0 5px 20px rgba(0,0,0,0.1);
+@dropdown-navbar-shadow:                        none;
 
 
 // Component
 // ========================================================================
 
 .hook-dropdown() {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    line-height: 20px;
+    border-radius: @dropdown-border-radius;
+    box-shadow: @dropdown-shadow;
 }
 
 
 // Modifier: `uk-dropdown-navbar`
 // ========================================================================
 
-.hook-dropdown-navbar() {}
-
-
-// Sub-object: `uk-dropdown-overlay`
-// ========================================================================
-
-.hook-dropdown-overlay() {}
+.hook-dropdown-navbar() { box-shadow: @dropdown-navbar-shadow; }
 
 
 // Miscellaneous
@@ -50,8 +57,30 @@
 
 .hook-dropdown-misc() {
 
-    .uk-dropdown > .uk-nav { margin: (15px - @dropdown-padding) (-@dropdown-padding); }
+    // Grid and panel in dropdown
+    // ==========================================================================
 
-    .uk-dropdown-small > .uk-nav { margin: (15px - @dropdown-small-padding) (-@dropdown-small-padding); }
+    // uk-dropdown-navbar panel link color
+    .uk-dropdown-navbar {
 
+        .uk-panel {
+
+            > a:not([class]) {
+
+                color: @dropdown-navbar-panel-link-color;
+
+                &:hover { color: @dropdown-navbar-panel-link-hover-color; }
+
+            }
+
+        }
+
+    }
+
+    // Only tablets and desktops
+    @media (min-width: @breakpoint-medium) {
+
+        .uk-dropdown-navbar:not(.uk-dropdown-stack) > .uk-grid > [class*='uk-width-']:nth-child(n+2) { border-left-color: @dropdown-navbar-divider-border; }
+
+    }
 }

@@ -1,0 +1,48 @@
+//
+// Component: Animation
+//
+// ========================================================================
+
+
+// Component
+// ========================================================================
+
+// uk-ripple
+@-webkit-keyframes uk-ripple {
+    0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(1.2, 1.2, 1);
+		transform: scale3d(1.2, 1.2, 1);
+	}
+}
+
+@keyframes uk-ripple {
+    0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	to {
+		opacity: 0;
+		-webkit-transform: scale3d(1.2, 1.2, 1);
+		transform: scale3d(1.2, 1.2, 1);
+	}
+}
+
+// uk-blur
+@-webkit-keyframes uk-blur {
+    0% { -webkit-filter: blur(0px); }
+    50% { -webkit-filter: blur(8px); }
+    100% { -webkit-filter: blur(0px); }
+}
+
+@keyframes uk-blur {
+   0% { filter: blur(0px); }
+   50% { filter: blur(8px); }
+   100% { filter: blur(0px); }
+}

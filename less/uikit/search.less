@@ -7,56 +7,108 @@
 // Variables
 // ========================================================================
 
+@search-width:                                  240px;
+@search-focus-width:                            240px;
 @search-height:                                 @global-height;
-@search-padding:                                35px;
+@search-padding:                                15px;
+
+@search-border:                                 rgba(0,0,0,0);
 @search-border-width:                           0;
-@search-color:                                  @global-color;
+@search-background:                             rgba(0,0,0,0);
+@search-color:                                  @global-highlight-color;
 @search-placeholder-color:                      @global-muted-color;
 
-@search-icon:                                   "";
-
-@dropdown-search-background:                    #fff;
 @dropdown-search-color:                         @global-color;
 @dropdown-search-navbar-margin-top:             5px;
 @dropdown-search-navbar-margin-right:           -15px;
 
+@search-icon:                                   "\e036";
+@search-icon-size:                              20px;
+@search-icon-color:                             @global-highlight-color;
+
+// Dropdown modifier
+@dropdown-search-width:                         250px;
+@dropdown-search-margin-top:                    5px;
+@dropdown-search-background:                    fade(@global-inverted-background, 98%);
+@dropdown-search-color:                         @global-secondary-color;
+@dropdown-search-animation:                     uk-slide-bottom-fixed;
+@dropdown-search-navbar-margin-top:             5px;
+@dropdown-search-navbar-margin-right:           0;
+
+// Nav modifier
 @nav-search-color:                              @global-color;
-@nav-search-active-background:                  @global-primary-background;
+@nav-search-active-background:                  rgba(0,0,0,0);
 @nav-search-active-color:                       @global-contrast-color;
 @nav-search-header-color:                       @global-muted-color;
-@nav-search-divider-border:                     @global-border;
-@nav-search-nested-color:                       @global-link-color;
-@nav-search-nested-hover-color:                 @global-link-hover-color;
+@nav-search-divider-border:                     rgba(255,255,255,0.06);
+@nav-search-nested-color:                       @global-color;
+@nav-search-nested-hover-color:                 @global-contrast-color;
+
+// Search in offcanvas
+@offcanvas-search-margin:                       @global-margin 0;
+@offcanvas-search-background:                   lighten(@offcanvas-bar-background, 3%);
+@offcanvas-search-border:                       rgba(0,0,0,0);
+@offcanvas-search-color:                        @global-contrast-color;
+@offcanvas-search-placeholder-color:            @global-color;
+@offcanvas-search-icon-color:                   @global-color;
+
+//
+// New
+//
+
+@search-border-radius:                          @global-border-radius;
+
+@search-focus-background:                       @global-background;
+
+@nav-search-font-family:                        @global-alternate-font-family;
+@nav-search-font-size:                          11px;
+@nav-search-text-transform:                     @global-text-transform;
+@nav-search-letter-spacing:                     @global-letter-spacing;
+
+@offcanvas-search-shadow:                       0 3px 10px rgba(0,0,0,0.5);
+
+@navbar-search-focus-background:                rgba(0,0,0,0);
+@navbar-search-color:                           @global-contrast-color;
+@navbar-search-placeholder-color:               @global-color;
+@navbar-search-icon-size:                       20px;
+@navbar-search-icon-color:                      @global-contrast-color;
+
+@search-dropdown-shadow:                        none;
 
 
 // Component
 // ========================================================================
 
-.hook-search() { z-index: 1; }
+.hook-search() {}
 
-.hook-search-icon() {
-    height: @global-height;
-    background: url("@{global-image-path}/search.svg") 50% 50% no-repeat;
-    z-index: -1;
-}
+.hook-search-icon() { font-family: @global-theme-icon-font-family; }
 
 
 // Sub-object `uk-search-field`
 // ========================================================================
 
 .hook-search-field() {
-    padding-left: (@search-padding + 10px);
-    font-size: 18px;
-    font-weight: 300;
+    position: relative;
+    border-radius: @search-border-radius;
+    font-family: @nav-search-font-family;
+    font-size: @nav-search-font-size;
+    text-transform: @nav-search-text-transform;
+    letter-spacing: @nav-search-letter-spacing;
 }
 
-.hook-search-field-focus() {}
+.hook-search-field-focus() {
+    background: @search-focus-background;
+    cursor: text;
+}
 
 
 // Dropdown modifier: `uk-dropdown-search`
 // ========================================================================
 
-.hook-dropdown-search() {}
+.hook-dropdown-search() {
+    border-radius: @search-border-radius;
+    box-shadow: @search-dropdown-shadow;
+}
 
 
 // Nav modifier `uk-nav-search`
@@ -66,7 +118,12 @@
 // Items
 //
 
-.hook-nav-search() {}
+.hook-nav-search() {
+    font-family: @nav-search-font-family;
+    font-size: @nav-search-font-size;
+    text-transform: @nav-search-text-transform;
+    letter-spacing: @nav-search-letter-spacing;
+}
 
 // Active
 .hook-nav-search-active() {}
@@ -87,10 +144,26 @@
 // Search in offcanvas
 // ========================================================================
 
-.hook-offcanvas-search-field() {}
+.hook-offcanvas-search-field() { box-shadow: @offcanvas-search-shadow; }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-search-misc() {}
+.hook-search-misc() {
+
+    // Search in uk-navbar
+    .uk-navbar .uk-search::before {
+        color: @navbar-search-icon-color;
+        font-size: @navbar-search-icon-size;
+    }
+
+    .uk-navbar .uk-search-field { color: @navbar-search-color; }
+
+    .uk-navbar .uk-search-field:-ms-input-placeholder { color: @navbar-search-placeholder-color !important; }
+    .uk-navbar .uk-search-field::-moz-placeholder { color: @navbar-search-placeholder-color; }
+    .uk-navbar .uk-search-field::-webkit-input-placeholder { color: @navbar-search-placeholder-color; }
+
+    .uk-navbar .uk-search-field:focus { background: @navbar-search-focus-background; }
+
+}

@@ -9,19 +9,29 @@
 
 @datepicker-nav-margin-bottom:                  @global-margin;
 @datepicker-nav-color:                          @global-color;
-@datepicker-nav-hover-color:                    @global-color;
+@datepicker-nav-hover-color:                    @global-highlight-color;
+
+@datepicker-previous-icon:                      "\e094";
+@datepicker-next-icon:                          "\e095";
 
 @datepicker-table-color:                        @global-color;
 
-@datepicker-table-hover-background:             @global-default-background;
-@datepicker-table-hover-color:                  @global-color;
-@datepicker-table-onclick-background:           @global-default-hover-background;
-@datepicker-table-onclick-color:                @global-color;
+@datepicker-table-hover-background:             @global-default-hover-background;
+@datepicker-table-hover-color:                  @global-contrast-color;
+@datepicker-table-onclick-background:           @global-primary-background;
+@datepicker-table-onclick-color:                @global-contrast-color;
 
 @datepicker-table-active-background:            @global-primary-background;
 @datepicker-table-active-color:                 @global-contrast-color;
 
 @datepicker-table-muted-color:                  @global-muted-color;
+
+//
+// New
+//
+
+@datepicker-font-family:                        @global-alternate-font-family;
+@datepicker-icon-font-family:                   'theme-icons';
 
 
 // Component
@@ -31,7 +41,10 @@
 
 .hook-datepicker-nav-item() {}
 
-.hook-datepicker-table-item() {}
+.hook-datepicker-table-item() {
+    border-radius: @global-border-radius;
+    text-align: center;
+}
 
 .hook-datepicker-table-item-hover() {}
 
@@ -43,4 +56,14 @@
 // Miscellaneous
 // ========================================================================
 
-.hook-datepicker-misc() {}
+.hook-datepicker-misc() {
+
+    .uk-datepicker { font-family: @datepicker-font-family; }
+
+    // Icon font
+    .uk-datepicker-previous:after,
+    .uk-datepicker-next:after {
+        font-family: @datepicker-icon-font-family;
+        font-size: 11px;
+    }
+}

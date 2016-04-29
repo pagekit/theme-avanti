@@ -7,18 +7,48 @@
 // Variables
 // ========================================================================
 
-@accordion-title-margin-bottom:                 0;
-@accordion-title-padding-vertical:              15px;
-@accordion-title-padding-horizontal:            40px;
-@accordion-title-font-size:                     round((@global-font-size * 1.14)); // 16px / 18px
-@accordion-title-line-height:                   round((@accordion-title-font-size * 1.36)); // 22px / 24px
-@accordion-title-background:                    transparent;
+@accordion-title-margin-bottom:                 round(@accordion-title-padding-vertical * 2);
+@accordion-title-padding-vertical:              6px;
+@accordion-title-padding-horizontal:            @accordion-title-margin-bottom;
+@accordion-title-font-size:                     11px;
+@accordion-title-line-height:                   24px;
+@accordion-title-background:                    rgba(0,0,0,0);
+
+@accordion-content-padding-horizontal:          @accordion-title-padding-horizontal;
+@accordion-content-padding-bottom:              @accordion-title-padding-horizontal;
 
 //
 // New
 //
 
-@accordion-border:                              @global-border;
+@accordion-title-font-family:                   @global-alternate-font-family;
+@accordion-title-text-transform:                @global-text-transform;
+@accordion-title-letter-spacing:                @global-letter-spacing;
+
+@accordion-title-border-width:                  0;
+@accordion-title-border:                        rgba(0,0,0,0);
+@accordion-title-border-radius:                 @global-border-radius;
+@accordion-title-color:                         @global-muted-color;
+
+@accordion-title-hover-background:              @accordion-title-background;
+@accordion-title-hover-border:                  @global-border;
+@accordion-title-hover-color:                   @global-color;
+
+@accordion-title-onclick-background:            rgba(0,0,0,0);
+@accordion-title-onclick-border:                rgba(0,0,0,0);
+@accordion-title-onclick-color:                 @global-highlight-color;
+
+@accordion-title-active-background:             rgba(0,0,0,0);
+@accordion-title-active-border:                 rgba(0,0,0,0);
+@accordion-title-active-color:                  @global-highlight-color;
+
+@accordion-icon-toggle:                         "\e095";
+@accordion-icon-toggle-active:                  "\e097";
+@accordion-icon-toggle-size:                    12px;
+@accordion-icon-toggle-offset:                  round(@accordion-icon-toggle-size / 2);
+@accordion-icon-toggle-color:                   @global-muted-color;
+@accordion-icon-toggle-hover-color:             @accordion-title-hover-color;
+@accordion-icon-toggle-active-color:            @accordion-title-active-color;
 
 
 // Component
@@ -31,38 +61,82 @@
 // ========================================================================
 
 .hook-accordion-title() {
+
     position: relative;
-    padding-left: 0;
+    box-sizing: border-box;
+    padding-left: round(@accordion-icon-toggle-size + (@accordion-title-padding-horizontal * 1.7));
+    border: @accordion-title-border-width solid @accordion-title-border;
+    border-radius: @accordion-title-border-radius;
+    color: @accordion-title-color;
+    font-family: @accordion-title-font-family;
+    text-transform: @accordion-title-text-transform;
+    letter-spacing: @accordion-title-letter-spacing;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+
+    // Icon toggle
+    &::before {
+        content: @accordion-icon-toggle;
+        position: absolute;
+        top: auto;
+        left: @accordion-title-padding-horizontal;
+        width: @accordion-icon-toggle-size;
+        padding: 1px;
+        font-family: @global-theme-icon-font-family;
+        font-size: @accordion-icon-toggle-size;
+        color: @accordion-icon-toggle-color;
+        -webkit-transition: @global-transition;
+        transition: @global-transition;
+    }
+
+    // Hover
+    &:hover {
+
+        border-color: @accordion-title-hover-border;
+        background: @accordion-title-hover-background;
+        color: @accordion-title-hover-color;
+
+        // Icon toggle
+        &::before { color: @accordion-icon-toggle-hover-color; }
+
+    }
+
+    // Onclick
+    &:active {
+        border-color: @accordion-title-onclick-border;
+        background: @accordion-title-onclick-background;
+        color: @accordion-title-onclick-color;
+
+        // Icon toggle
+        &::before { color: @accordion-icon-toggle-active-color; }
+
+    }
+
+    // Active / Open
+    &.uk-active {
+
+        border-color: @accordion-title-active-border;
+        background: @accordion-title-active-background;
+        color: @accordion-title-active-color;
+
+        // Icon toggle
+        &::before {
+            content: @accordion-icon-toggle-active;
+            color: @accordion-icon-toggle-active-color;
+        }
+
+    }
+
 }
 
 
 // Modifier: `uk-accordion-content`
 // ========================================================================
 
-.hook-accordion-content() { padding-left: 0; }
+.hook-accordion-content() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-accordion-misc() {
-
-    .uk-accordion-title:not(:first-child) { border-top: 1px solid @accordion-border; }
-
-    // Toggle Icon
-    .uk-accordion-title:before {
-        content: "";
-        position: absolute;
-        top: 20px;
-        right: @accordion-title-padding-vertical;
-        height: 13px;
-        width: 13px;
-        background: url("@{global-image-path}/plus.svg") 0 0 no-repeat;
-    }
-
-    .uk-accordion-title:hover,
-    .uk-accordion-title:hover:before { opacity: 0.7; }
-
-    .uk-accordion-title.uk-active:before  { background: url("@{global-image-path}/minus.svg") 0 0 no-repeat; }
-
-}
+.hook-accordion-misc() {}

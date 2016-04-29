@@ -12,69 +12,105 @@
 @button-small-height:                           @global-height-small;
 @button-large-height:                           @global-height-large;
 
-@button-line-height:                            @global-height - 2;
-@button-mini-line-height:                       @global-height-mini - 2;
-@button-small-line-height:                      @global-height-small - 2;
-@button-large-line-height:                      @global-height-large - 2;
+@button-line-height:                            @global-height;
+@button-mini-line-height:                       @global-height-mini;
+@button-small-line-height:                      @global-height-small;
+@button-large-line-height:                      @global-height-large;
 
-@button-mini-font-size:                         round((@global-font-size * 0.85)); // 12px / 14px
-@button-small-font-size:                        round((@global-font-size * 0.85)); // 12px / 14px
-@button-large-font-size:                        round((@global-font-size * 1.14)); // 16px / 18px
+@button-font-size:                              11px;
+@button-mini-font-size:                         10px;
+@button-small-font-size:                        9px;
+@button-large-font-size:                        13px;
 
-@button-padding-horizontal:                     25px;
-@button-mini-padding-horizontal:                8px;
-@button-small-padding-horizontal:               12px;
-@button-large-padding-horizontal:               35px;
-
-@button-font-size:                              round((@global-font-size * 0.85)); // 14px
-@button-background:                             transparent;
-@button-color:                                  @global-muted-color;
-@button-hover-background:                       transparent;
-@button-hover-color:                            #888;
-@button-active-background:                      transparent;
-@button-active-color:                           @global-color;
+@button-background:                             @global-default-background;
+@button-color:                                  @global-contrast-color;
+@button-hover-background:                       @global-default-hover-background;
+@button-hover-color:                            @button-color;
+@button-active-background:                      @global-default-active-background;
+@button-active-color:                           fade(@button-color, 65%);
 
 @button-primary-background:                     @global-primary-background;
 @button-primary-color:                          @global-contrast-color;
 @button-primary-hover-background:               @global-primary-hover-background;
-@button-primary-hover-color:                    @global-contrast-color;
+@button-primary-hover-color:                    @button-primary-color;
 @button-primary-active-background:              @global-primary-active-background;
-@button-primary-active-color:                   @global-contrast-color;
+@button-primary-active-color:                   fade(@button-primary-color, 65%);
 
 @button-success-background:                     @global-success-background;
 @button-success-color:                          @global-contrast-color;
 @button-success-hover-background:               @global-success-hover-background;
 @button-success-hover-color:                    @global-contrast-color;
 @button-success-active-background:              @global-success-active-background;
-@button-success-active-color:                   @global-contrast-color;
+@button-success-active-color:                   fade(@global-contrast-color, 65%);
 
 @button-danger-background:                      @global-danger-background;
 @button-danger-color:                           @global-contrast-color;
 @button-danger-hover-background:                @global-danger-hover-background;
 @button-danger-hover-color:                     @global-contrast-color;
 @button-danger-active-background:               @global-danger-active-background;
-@button-danger-active-color:                    @global-contrast-color;
+@button-danger-active-color:                    fade(@global-contrast-color, 65%);
 
-@button-disabled-background:                    transparent;
-@button-disabled-color:                         lighten(@button-color, 10%);
+@button-disabled-background:                    @global-light-background;
+@button-disabled-color:                         @global-muted-color;
 
 @button-link-color:                             @global-link-color;
 @button-link-hover-color:                       @global-link-hover-color;
 @button-link-disabled-color:                    @global-muted-color;
+
+//
+// New
+//
+
+@button-padding-horizontal:                     round((@button-height / 1.2));
+@button-large-padding-horizontal:               round((@button-large-height / 1.2));
+@button-small-padding-horizontal:               round((@button-small-height / 1.2));
+@button-mini-padding-horizontal:                round((@button-mini-height / 1.2));
+
+@button-group-padding-horizontal:               (@button-height / 2);
+@button-group-large-padding-horizontal:         (@button-large-height / 2);
+@button-group-small-padding-horizontal:         (@button-small-height / 2);
+@button-group-mini-padding-horizontal:          (@button-mini-height / 2);
+
+@button-border-radius:                          @global-border-radius;
+@button-large-border-radius:                    @global-border-radius;
+
+@button-font-family:                            @global-alternate-font-family;
+@button-font-weight:                            @global-font-weight;
+@button-text-transform:                         @global-text-transform;
+@button-letter-spacing:                         @global-letter-spacing;
+
+@button-group-border-width:                     0;
+@button-group-border:                           rgba(0,0,0,0.06);
+
+@button-link-icon:                              '\e095';
+
+
 
 
 // Component
 // ========================================================================
 
 .hook-button() {
-    border: 1px solid lighten(@button-color, 10%);
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    padding: 0 @button-padding-horizontal;
+    border-radius: @button-border-radius;
+    overflow: hidden;
+    z-index: 1;
+    font-family: @button-font-family;
+    font-weight: @button-font-weight;
+    text-transform: @button-text-transform;
+    letter-spacing: @button-letter-spacing;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+    -webkit-backface-visibility: hidden;
 }
 
-.hook-button-hover() { border-color: lighten(@button-hover-color, 10%); }
+.hook-button-hover() {}
 
-.hook-button-active() { border-color: lighten(@button-active-color, 10%); }
+.hook-button-active() {
+    box-shadow: inset 2px 2px 6px @global-default-active-shadow;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+}
 
 
 // Color modifiers
@@ -84,49 +120,70 @@
 // Modifier: `uk-button-primary`
 //
 
-.hook-button-primary() { border-color: transparent; }
+.hook-button-primary() {}
 
-.hook-button-primary-hover() { border-color: transparent; }
+.hook-button-primary-hover() {}
 
-.hook-button-primary-active() { border-color: transparent; }
+.hook-button-primary-active() { box-shadow: inset 2px 2px 6px @global-primary-active-shadow; }
 
 //
 // Modifier: `uk-button-success`
 //
 
-.hook-button-success() { border-color: transparent; }
+.hook-button-success() {}
 
-.hook-button-success-hover() { border-color: transparent; }
+.hook-button-success-hover() {}
 
-.hook-button-success-active() { border-color: transparent; }
+.hook-button-success-active() { box-shadow: inset 2px 2px 6px @global-success-active-shadow; }
 
 //
 // Modifier: `uk-button-danger`
 //
 
-.hook-button-danger() { border-color: transparent; }
+.hook-button-danger() {}
 
-.hook-button-danger-hover() { border-color: transparent; }
+.hook-button-danger-hover() {}
 
-.hook-button-danger-active() { border-color: transparent; }
+.hook-button-danger-active() { box-shadow: inset 2px 2px 6px @global-danger-active-shadow; }
 
 
 // Disabled state
 // ========================================================================
 
-.hook-button-disable() { border-color: lighten(@button-disabled-color, 10%); }
+.hook-button-disable() { box-shadow: none; }
 
 
 // Modifier: `uk-button-link`
 // ========================================================================
 
-.hook-button-link() { padding: 0 !important; }
+.hook-button-link() {
+
+    padding: 0 5px 0 15px;
+    box-shadow: none;
+
+    // Hover
+    &:hover { text-decoration: none; }
+
+    // Icon
+    &::before {
+        content: @button-link-icon;
+        position: relative;
+        top: 1px;
+        margin: 0 5px 0 -10px;
+        font-family: @global-theme-icon-font-family;
+        font-size: 12px;
+    }
+
+}
 
 
 // Size modifiers
 // ========================================================================
 
-.hook-button-large() {}
+.hook-button-large() {
+    padding: 0 @button-large-padding-horizontal;
+    border-radius: @button-large-border-radius;
+}
 
 
 // Miscellaneous
@@ -134,27 +191,42 @@
 
 .hook-button-misc() {
 
-    .uk-button-link:focus { outline: none; }
+    .uk-button-small { padding: 0 @button-small-padding-horizontal; }
+    .uk-button-mini { padding: 0 @button-mini-padding-horizontal; }
 
-    /* Sub-object `uk-button-group`
-     ========================================================================== */
+    // Sub-object `uk-button-group`
+    // ==========================================================================
 
-    /*
-     * Collapse border
-     */
+    // Reset border-radius
+    .uk-button-group > .uk-button:not(:first-child):not(:last-child),
+    .uk-button-group > div:not(:first-child):not(:last-child) .uk-button { border-radius: 0; }
 
+    .uk-button-group > .uk-button:first-child,
+    .uk-button-group > div:first-child .uk-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .uk-button-group > .uk-button:last-child,
+    .uk-button-group > div:last-child .uk-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    // Collapse border
     .uk-button-group > .uk-button:nth-child(n+2),
-    .uk-button-group > div:nth-child(n+2) .uk-button { margin-left: -1px; }
+    .uk-button-group > div:nth-child(n+2) .uk-button { border-left: @button-group-border-width solid @button-group-border; }
 
-    /*
-     * Create position context to superimpose the successor elements border
-     * Known issue: If you use an `a` element as button and an icon inside,
-     * the active state will not work if you click the icon inside the button
-     * Workaround: Just use a `button` or `input` element as button
-     */
+    .uk-button-group .uk-button:active { position: relative; }
 
-    .uk-button-group .uk-button:hover,
-    .uk-button-group .uk-button:active,
-    .uk-button-group .uk-button.uk-active { position: relative; }
+    // Padding
+    .uk-button-group {
+
+        .uk-button { padding: 0 @button-group-padding-horizontal; }
+        .uk-button-large { padding: 0 @button-group-large-padding-horizontal; }
+        .uk-button-small { padding: 0 @button-group-small-padding-horizontal; }
+        .uk-button-mini { padding: 0 @button-group-mini-padding-horizontal; }
+
+    }
 
 }

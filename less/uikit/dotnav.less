@@ -7,34 +7,72 @@
 // Variables
 // ========================================================================
 
+@dotnav-margin-horizontal:                      8px;
+@dotnav-width:                                  10px;
+@dotnav-height:                                 @dotnav-width;
+
+@dotnav-background:                             rgba(0,0,0,0);
+@dotnav-hover-background:                       rgba(0,0,0,0);
+@dotnav-onclick-background:                     @global-inverted-background;
+@dotnav-active-background:                      @dotnav-onclick-background;
+
+@dotnav-contrast-background:                    rgba(0,0,0,0);
+@dotnav-contrast-hover-background:              rgba(0,0,0,0);
+@dotnav-contrast-onclick-background:            @global-contrast-color;
+@dotnav-contrast-active-background:             @dotnav-contrast-onclick-background;
+
+//
+// New
+//
+
+@dotnav-border-width:                           @global-border-width;
+@dotnav-border:                                 fade(@global-inverted-background, 20%);
+@dotnav-hover-border:                           @global-inverted-background;
+@dotnav-onclick-border:                         @global-inverted-background;
+@dotnav-active-border:                          @global-inverted-background;
+
+@dotnav-contrast-border:                        fade(@global-contrast-color, 50%);
+@dotnav-contrast-hover-border:                  @global-contrast-color;
+@dotnav-contrast-onclick-border:                @global-contrast-color;
+@dotnav-contrast-active-border:                 @global-contrast-color;
+
 
 // Component
 // ========================================================================
 
 .hook-dotnav-item() {
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    border: @dotnav-border-width solid @dotnav-border;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
 }
 
-.hook-dotnav-item-hover() {}
+.hook-dotnav-item-hover() { border-color: @dotnav-hover-border; }
 
-.hook-dotnav-item-onclick() {}
+.hook-dotnav-item-onclick() { border-color: @dotnav-onclick-border; }
 
 .hook-dotnav-item-active() {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
+    border-color: @dotnav-active-border;
+    box-shadow: 0 0 0 1px @dotnav-active-border;
 }
 
-.hook-dotnav-contrast-item() {}
+.hook-dotnav-contrast-item() { border-color: @dotnav-contrast-border; }
 
-.hook-dotnav-contrast-item-hover() {}
+.hook-dotnav-contrast-item-hover() { border-color: @dotnav-contrast-hover-border; }
 
-.hook-dotnav-contrast-item-onclick() {}
+.hook-dotnav-contrast-item-onclick() { border-color: @dotnav-contrast-onclick-border; }
 
-.hook-dotnav-contrast-item-active() {}
+.hook-dotnav-contrast-item-active() {
+    border-color: @dotnav-contrast-active-border;
+    box-shadow: 0 0 0 1px @dotnav-contrast-active-border;
+}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-dotnav-misc() {}
+.hook-dotnav-misc() {
+
+    // Centering dotnav items
+    .uk-dotnav:extend(.uk-flex-middle all) {}
+
+}

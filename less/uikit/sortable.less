@@ -15,7 +15,12 @@
 
 .hook-sortable() {}
 
-.hook-sortable-dragged() {}
+.hook-sortable-dragged() {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-transition: scale 0.1s;
+    transition: scale 0.1s;
+}
 
 .hook-sortable-placeholder() {}
 

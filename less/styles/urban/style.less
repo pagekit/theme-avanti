@@ -1,0 +1,277 @@
+@import 'https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700';
+@import 'https://fonts.googleapis.com/css?family=Oswald:300,400';
+
+
+// Global variables
+// ========================================================================
+
+//
+// Text
+//
+
+@global-color:                                  #696862;
+@global-muted-color:                            #b9b7ad;
+@global-highlight-color:                        #43403a;
+
+@global-link-color:                             #c36248;
+@global-link-hover-color:                       darken(@global-link-color, 20%);
+
+@global-contrast-color:                         #fff;
+
+@global-primary-color:                          @global-link-color;
+@global-primary-link-color:                     #f9dd98;
+@global-primary-link-hover-color:               lighten(@global-primary-link-color, 10%);
+
+@global-secondary-color:                        fade(@global-secondary-highlight-color, 50%);
+@global-secondary-highlight-color:              #fff;
+@global-secondary-inverted-color:               @global-highlight-color;
+
+@global-success-color:                          #92ac75;
+@global-warning-color:                          #e0ca90;
+@global-danger-color:                           #b1515c;
+
+//
+// Typography
+//
+
+@global-font-family:                            'PT Serif', Times New Roman, serif;
+@global-alternate-font-family:                  'Oswald', Helvetica, Arial, sans-serif;
+
+@global-font-size:                              15px;
+@global-line-height:                            24px;
+@global-font-weight:                            normal;
+@global-bold-font-weight:                       bold;
+@global-text-transform:                         uppercase;
+@global-letter-spacing:                         2px;
+@global-h1-font-size:                           36px;
+@global-h1-line-height:                         42px;
+@global-h3-font-size:                           24px;
+@global-h3-line-height:                         28px;
+@global-heading-font-weight:                    normal;
+@global-heading-text-transform:                 @global-text-transform;
+
+//
+// Backgrounds & Borders
+//
+
+@global-background:                             #f7f6f2;
+@global-light-background:                       #b0ab9f;
+@global-dark-background:                        #efeee9;
+@global-secondary-background:                   #3c3d37;
+@global-inverted-background:                    #38352f;
+
+@global-default-active-background:              darken(@global-default-background, 4%);
+
+@global-primary-background:                     #c36248;
+@global-success-background:                     #92ac75;
+@global-warning-background:                     #e0ca90;
+@global-danger-background:                      #b1515c;
+
+@global-border:                                 fade(@global-light-background, 15%);
+@global-border-width:                           1px;
+
+//
+// Misc
+//
+
+@global-style:                                  'urban';
+
+
+// Component variables
+// ========================================================================
+
+//
+// Base
+//
+
+@base-heading-font-family:                      'Oswald', Helvetica, Arial, sans-serif;
+@base-alternate-heading-font-family:            'Oswald', Helvetica, Arial, sans-serif;
+
+@base-heading-font-family:                      @global-alternate-font-family;
+@base-code-background:                          @global-dark-background;
+
+//
+// Block
+//
+
+@block-primary-color:                           @global-contrast-color;
+@block-primary-muted-color:                     fade(@global-contrast-color, 60%);
+
+
+//
+// Button
+//
+
+@button-disabled-background:                    @global-dark-background;
+
+//
+// Comment
+//
+
+
+@comment-background:                            @global-dark-background;
+
+//
+// Contrast
+//
+
+@contrast-base-link-color:                      @global-primary-link-color;
+@contrast-subnav-active-color:                  @global-primary-link-color;
+@contrast-text-primary-color:                   @global-primary-link-color;
+
+//
+// Dropdown
+//
+
+@dropdown-background:                           @global-background;
+@dropdown-shadow:                               0 1px 3px rgba(0,0,0,0.15);
+@dropdown-navbar-shadow:                        @dropdown-shadow;
+
+@dropdown-navbar-background:                    fade(#8e887b, 98%);
+@dropdown-navbar-divider-border:                fade(@navbar-nav-color, 10%);
+@dropdown-navbar-color:                         @navbar-nav-color;
+@dropdown-navbar-panel-link-color:              @global-primary-link-color;
+@dropdown-navbar-panel-link-hover-color:        @global-primary-link-hover-color;
+
+//
+// List
+//
+
+@list-striped-background:                       @global-dark-background;
+
+//
+// Modal
+//
+
+@modal-header-background:                       @global-dark-background;
+
+//
+// Nav
+//
+
+@nav-navbar-color:                              @navbar-nav-hover-color;
+@nav-navbar-hover-color:                        @navbar-nav-color;
+@nav-navbar-header-color:                       @global-primary-link-color;
+@nav-navbar-divider-border:                     fade(@navbar-nav-color, 10%);
+@nav-navbar-nested-color:                       @nav-navbar-hover-color;
+@nav-navbar-nested-hover-color:                 @nav-navbar-color;
+
+@nav-side-active-background:                    @global-dark-background;
+@nav-side-active-color:                         @global-highlight-color;
+
+@nav-offcanvas-active-color:                    @global-primary-link-color;
+@nav-offcanvas-shadow:                          0 3px 10px rgba(0,0,0,0.1);
+
+//
+// Navbar
+//
+
+@navbar-background:                             #868175;
+@navbar-color:                                  #cfc9bc;
+
+@navbar-nav-font-weight:                        @global-bold-font-weight;
+@navbar-nav-color:                              #cfc9bc;
+@navbar-nav-hover-color:                        @global-contrast-color;
+@navbar-nav-onclick-color:                      @global-highlight-color;
+@navbar-nav-active-color:                       @global-contrast-color;
+
+@navbar-brand-color:                            @global-contrast-color;
+@navbar-brand-hover-color:                      @navbar-nav-color;
+
+//
+// Offcanvas
+//
+
+@offcanvas-panel-title-color:                   @global-primary-link-color;
+@offcanvas-panel-link-color:                    @global-primary-link-color;
+@offcanvas-panel-link-hover-color:              @global-primary-link-hover-color;
+
+@offcanvas-after-background:                    rgba(0,0,0,0.1);
+@offcanvas-after-shadow:                        rgba(0,0,0,0.1);
+
+//
+// Overlay
+//
+
+
+@overlay-gradient-top:                          fade(@global-dark-background, 100%);
+@overlay-gradient-bottom:                       fade(@global-dark-background, 40%);
+
+//
+// Panel
+//
+
+@pagination-hover-background:                   @global-dark-background;
+
+//
+// Panel
+//
+
+@panel-box-background:                          @global-dark-background;
+
+@panel-box-primary-color:                       @global-contrast-color;
+@panel-box-primary-title-color:                 @global-contrast-color;
+
+@panel-box-secondary-link-color:                @global-primary-link-color;
+@panel-box-secondary-link-hover-color:          @global-primary-link-hover-color;
+
+//
+// Progress
+//
+
+@progress-background:                           @global-dark-background;
+
+//
+// Progress
+//
+
+@subnav-pill-hover-background:                  @global-dark-background;
+
+//
+// Search
+//
+
+@navbar-search-placeholder-color:               @navbar-nav-color;
+
+@dropdown-search-background:                    @dropdown-navbar-background;
+@dropdown-search-color:                         @navbar-nav-color;
+
+@search-dropdown-shadow:                        @dropdown-navbar-shadow;
+
+@nav-search-color:                              @navbar-nav-color;
+@nav-search-active-color:                       @navbar-nav-hover-color;
+@nav-search-header-color:                       @navbar-nav-color;
+@nav-search-nested-color:                       @navbar-nav-color;
+@nav-search-nested-hover-color:                 @navbar-nav-hover-color;
+
+@offcanvas-search-shadow:                       @nav-offcanvas-shadow;
+
+//
+// Table
+//
+
+@table-striped-background:                      @global-dark-background;
+
+
+// Theme variables
+// ========================================================================
+
+//
+// Navbar
+//
+
+@theme-navbar-icon-click-color:                 @global-primary-link-color;
+
+//
+// Widgetkit Gallery modifier 'tm-gallery-avanti'
+//
+
+@theme-overlay-background:                      @global-dark-background;
+@theme-overlay-gradient-top:                    fade(@theme-overlay-background, 100%);
+@theme-overlay-gradient-bottom:                 fade(@theme-overlay-background, 40%);
+
+//
+// Widgetkit Avanti Grid
+//
+
+@theme-badge-muted-background:                  @global-dark-background;

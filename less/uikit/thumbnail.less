@@ -7,29 +7,76 @@
 // Variables
 // ========================================================================
 
+@thumbnail-padding:                             5px;
+@thumbnail-border-width:                        0;
 @thumbnail-border:                              @global-border;
-@thumbnail-background:                          @global-background;
-@thumbnail-hover-border:                        darken(@global-border, 10%);
+@thumbnail-background:                          @global-light-background;
+@thumbnail-hover-border:                        @thumbnail-border;
 @thumbnail-hover-background:                    @global-background;
 
 @thumbnail-caption-color:                       @global-color;
+
+//
+// New
+//
+
+@thumbnail-border-radius:                       @global-border-radius;
+
+@thumbnail-active-border:                       @global-border;
+@thumbnail-active-background:                   @global-background;
+@thumbnail-active-color:                        @global-highlight-color;
+
+@thumbnail-caption-font-family:                 @global-alternate-font-family;
+@thumbnail-caption-font-size:                   11px;
+@thumbnail-caption-text-transform:              @global-text-transform;
+@thumbnail-caption-letter-spacing:              @global-letter-spacing;
+
+@thumbnail-shadow:                              0 0 0 rgba(0,0,0,0);
+@thumbnail-hover-shadow:                        0 15px 45px rgba(0,0,0,0.1), 0 5px 20px rgba(0,0,0,0.1);
 
 
 // Component
 // ========================================================================
 
-.hook-thumbnail() {}
+.hook-thumbnail() {
+    border-radius: @thumbnail-border-radius;
+    box-shadow: @thumbnail-shadow;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
 
-.hook-thumbnail-hover() {}
+.hook-thumbnail-hover() { box-shadow: @thumbnail-hover-shadow; }
 
 
 // Caption
 // ========================================================================
 
-.hook-thumbnail-caption() {}
+.hook-thumbnail-caption() {
+    font-family: @thumbnail-caption-font-family;
+    font-size: @thumbnail-caption-font-size;
+    text-transform: @thumbnail-caption-text-transform;
+    letter-spacing: @thumbnail-caption-letter-spacing;
+}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-thumbnail-misc() {}
+.hook-thumbnail-misc() {
+
+    // onclick event
+    a.uk-thumbnail {
+
+        &:active {
+
+            border-color: @thumbnail-active-border;
+            background: @thumbnail-active-background;
+            color: @thumbnail-active-color;
+
+            .uk-thumbnail-caption { color: @thumbnail-active-color; }
+
+        }
+
+    }
+
+}

@@ -8,38 +8,37 @@
 // ========================================================================
 
 @table-margin-vertical:                         @global-margin;
-@table-padding-vertical:                        16px;
-@table-padding-horizontal:                      12px;
 
 @table-caption-color:                           @global-muted-color;
-@table-caption-font-size:                       round((@global-font-size * 0.85)); // 12px / 14px
+@table-caption-font-size:                       12px;
 
-@table-striped-background:                      #fafafa;
-
-@table-condensed-padding-vertical:              10px;
-@table-condensed-padding-horizontal:            12px;
-
-@table-hover-background:                        #ffffdd;
+@table-striped-background:                      @global-light-background;
+@table-hover-background:                        @global-inverted-background;
+@table-active-background:                       @table-hover-background;
 
 //
 // New
 //
 
+@table-border-width:                            1px;
 @table-border:                                  @global-border;
+
+@table-hover-color:                             @global-contrast-color;
+@table-active-color:                            @table-hover-color;
 
 
 // Component
 // ========================================================================
 
-.hook-table() {}
+.hook-table() { border-top: @table-border-width solid @table-border; }
 
-.hook-table-active() {}
+.hook-table-active() { color: @table-active-color; }
 
 .hook-table-striped() {}
 
 .hook-table-condensed() {}
 
-.hook-table-hover() {}
+.hook-table-hover() { color: @table-hover-color; }
 
 
 // Miscellaneous
@@ -47,27 +46,7 @@
 
 .hook-table-misc() {
 
-    .uk-table th {
-        border-bottom: 1px solid @table-border;
-        font-size: round((@global-font-size * 0.85)); // 12px / 14px
-        text-transform: uppercase;
-        font-weight: normal;
-        color: @global-muted-color;
-    }
-
-    .uk-table :not(:first-child) > th { padding-top: @table-padding-vertical + @global-margin; }
-
-    .uk-table :not(:last-child) > td { border-bottom: 1px solid @table-border; }
-
-    .uk-table tfoot { border-top: 1px solid @table-border; }
-
-    .uk-table-middle img + a { vertical-align: middle; }
-
-    .uk-table-condensed th { padding: @table-condensed-padding-vertical @table-condensed-padding-horizontal; }
-
-    .uk-table tbody tr {
-        -webkit-transition: background-color 0.05s linear;
-        transition: background-color 0.05s linear;
-    }
+    // Table border
+    .uk-table { border: @table-border-width solid @table-border; }
 
 }

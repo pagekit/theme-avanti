@@ -11,24 +11,31 @@
 
 @comment-avatar-margin-right:                   @global-margin;
 
-@comment-title-margin-top:                      0;
-@comment-title-font-size:                       @global-font-size;
-@comment-title-line-height:                     @global-line-height;
+@comment-title-font-size:                       13px;
+@comment-title-line-height:                     26px;
 
-@comment-meta-margin-top:                       0;
 @comment-meta-color:                            @global-muted-color;
-@comment-meta-font-size:                        round((@global-font-size * 0.78)); // 12px
-@comment-meta-line-height:                      round((@comment-meta-font-size * 1.49)); // 18px
+@comment-meta-font-size:                        11px;
+@comment-meta-line-height:                      14px;
 
-@comment-list-margin-top:                       @global-margin + 10px;
+@comment-list-margin-top:                       @global-margin;
 
 //
 // New
 //
 
-@comment-primary-padding:                        @global-margin;
-@comment-primary-background:                     @global-default-hover-background;
+@comment-padding:                               15px;
+@comment-border-width:                          0;
+@comment-border:                                @global-border;
+@comment-border-radius:                         @global-border-radius;
+@comment-background:                            @global-light-background;
 
+@comment-primary-border:                        @global-primary-background;
+@comment-primary-background:                    @global-primary-background;
+@comment-primary-title-color:                   @global-contrast-color;
+
+@comment-title-font-family:                     @global-alternate-font-family;
+@comment-title-font-weight:                     @global-font-weight;
 
 
 // Component
@@ -40,43 +47,71 @@
 // Sub-object `uk-comment-header`
 // ========================================================================
 
-.hook-comment-header() {}
+.hook-comment-header() {
+    padding: @comment-padding;
+    border: @comment-border-width solid @comment-border;
+    border-radius: @comment-border-radius;
+    background: @comment-background;
+}
 
 
 // Sub-object `uk-comment-avatar`
 // ========================================================================
 
-.hook-comment-avatar() { border-radius: 500px; }
+.hook-comment-avatar() {}
 
 
 // Sub-object `uk-comment-title`
 // ========================================================================
 
-.hook-comment-title() { font-weight: 400; }
+.hook-comment-title() {
+    font-family: @comment-title-font-family;
+    font-weight: @comment-title-font-weight;
+    text-transform: @global-text-transform;
+    letter-spacing: @global-letter-spacing;
+}
 
 
 // Sub-object `uk-comment-meta`
 // ========================================================================
 
-.hook-comment-meta() {}
+.hook-comment-meta() {
+    text-transform: @global-text-transform;
+    letter-spacing: @global-letter-spacing;
+}
 
 
 // Sub-object `uk-comment-body`
 // ========================================================================
 
-.hook-comment-body() {}
+.hook-comment-body() {
+    padding-left: @comment-padding;
+    padding-right: @comment-padding;
+}
 
 
 // Sub-object `uk-comment-primary`
 // ========================================================================
 
-.hook-comment-primary() {
-    padding: @comment-primary-padding;
-    background: @comment-primary-background;
-}
+.hook-comment-primary() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-comment-misc() {}
+.hook-comment-misc() {
+
+    // Comment by administrator
+    .uk-comment-primary .uk-comment-header {
+
+        border-color: @comment-primary-border;
+        background: @comment-primary-background;
+
+        .uk-comment-title,
+        .uk-comment-meta { color: @comment-primary-title-color; }
+
+        a, a:hover { color: @comment-primary-title-color; }
+
+    }
+
+}

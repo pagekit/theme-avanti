@@ -12,10 +12,16 @@
     <div class="uk-form uk-form-horizontal">
 
         <div class="uk-form-row">
-            <label class="uk-form-label">{{ 'Logo Contrast' | trans }}</label>
-            <div class="uk-form-controls uk-form-width-large">
-                <input-image :source.sync="config.logo_contrast"></input-image>
-                <p class="uk-form-help-block">{{ 'Select an alternative logo which looks great on images.' | trans }}</p>
+            <span class="uk-form-label">{{ 'Style' | trans }}</span>
+            <div class="uk-form-controls">
+                <select id="form-styles" class="uk-form-width-large" v-model="config.style">
+                    <option value="">{{ 'Default' | trans }}</option>
+                    <option value="minimal">{{ 'Minimal' | trans }}</option>
+                    <option value="noble">{{ 'Noble' | trans }}</option>
+                    <option value="colorful">{{ 'Colorful' | trans }}</option>
+                    <option value="urban">{{ 'Urban' | trans }}</option>
+                    <option value="modern">{{ 'Modern' | trans }}</option>
+                </select>
             </div>
         </div>
 

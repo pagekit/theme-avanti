@@ -8,15 +8,20 @@
 // ========================================================================
 
 @form-advanced-size:                          16px;
-@form-advanced-border:                        #D5D5D5;
-@form-advanced-color:                         #fff;
+@form-advanced-border:                        @global-border;
+@form-advanced-border-width:                  @global-border-width;
+@form-advanced-margin-top:                    -4px;
+@form-advanced-color:                         @global-background;
 
-@form-advanced-checked-color:                 #fff;
+@form-advanced-checked-color:                 @global-highlight-color;
 
-@form-advanced-radio-size:                    4px;
+@form-advanced-radio-size:                    8px;
 
-@form-advanced-checkbox-icon:                 "";
-@form-advanced-checkbox-indeterminate-icon:   "";
+@form-advanced-checkbox-icon:                 "\e116";
+@form-advanced-checkbox-font-size:            12px;
+
+@form-advanced-disabled-border:               @global-border;
+@form-advanced-disabled-color:                @global-muted-color;
 
 
 // Component
@@ -28,10 +33,7 @@
 
 .hook-form-advanced-radio() {}
 
-.hook-form-advanced-checkbox() {
-    height: @form-advanced-size;
-    background: url("@{global-image-path}/checkbox-check.svg") 0 0 no-repeat;
-}
+.hook-form-advanced-checkbox() { font-family: @global-theme-icon-font-family; }
 
 .hook-form-advanced-disabled() {}
 
@@ -39,30 +41,4 @@
 // Miscellaneous
 // ========================================================================
 
-.hook-form-advanced-misc() {
-
-    .uk-form input[type="checkbox"] { border-radius: 2px; }
-
-    .uk-form input[type="radio"]:checked,
-    .uk-form input[type="checkbox"]:checked,
-    .uk-form input[type=checkbox]:indeterminate {
-        border-color: transparent;
-        background: @global-success-background;
-    }
-
-    .uk-form input[type=checkbox]:indeterminate:before {
-        height: @form-advanced-size;
-        background: url("@{global-image-path}/checkbox-indeterminate.svg") 0 0 no-repeat;
-    }
-
-    .uk-form input[type=radio]:disabled:checked,
-    .uk-form input[type=checkbox]:disabled:checked,
-    .uk-form input[type=checkbox]:disabled:indeterminate {
-        border-color: @form-advanced-disabled-border;
-        background-color: transparent;
-    }
-
-    .uk-form input[type=checkbox]:disabled:checked:before { background: url("@{global-image-path}/checkbox-check-disabled.svg") 0 0 no-repeat;}
-
-}
-
+.hook-form-advanced-misc() {}

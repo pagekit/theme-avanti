@@ -7,17 +7,77 @@
 // Variables
 // ========================================================================
 
+@slidenav-width:                                50px;
+@slidenav-height:                               @slidenav-width;
+@slidenav-font-size:                            @slidenav-width;
+@slidenav-line-height:                          (@slidenav-height - 2px);
+
+@slidenav-previous-icon:                        "\e901";
+@slidenav-next-icon:                            "\e902";
+
+@slidenav-position-previous:                    @global-grid-gutter;
+@slidenav-position-next:                        @slidenav-position-previous;
+
+@slidenav-color:                                fade(@global-secondary-background, 25%);
+@slidenav-hover-color:                          @global-secondary-background;
+@slidenav-active-color:                         @global-secondary-background;
+
+@slidenav-contrast-color:                       @global-contrast-color;
+@slidenav-contrast-hover-color:                 fade(@slidenav-contrast-color, 70%);
+@slidenav-contrast-active-color:                @slidenav-contrast-color;
+
+//
+// New
+//
+
+@slidenav-effect-width:                         50px;
+@slidenav-effect-background:                    fade(@slidenav-color, 15%);
+@slidenav-contrast-effect-background:           fade(@slidenav-contrast-color, 15%);
+
 
 // Component
 // ========================================================================
 
-.hook-slidenav() {}
+.hook-slidenav() {
 
-.hook-slidenav-hover() {}
+    position: relative;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+    -webkit-transform: @global-transform;
+    transform: @global-transform;
 
-.hook-slidenav-active() {}
+    // Effect style
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: '';
+        margin: -(@slidenav-effect-width / 2) 0 0 -(@slidenav-effect-width / 2);
+        width: @slidenav-effect-width;
+        height: @slidenav-effect-width;
+        border-radius: 50%;
+        background: @slidenav-effect-background;
+        opacity: 0;
+    }
 
-.hook-slidenav-contrast() {}
+}
+
+.hook-slidenav-hover() {
+    -webkit-transform: @global-hover-transform;
+    transform: @global-hover-transform;
+}
+
+.hook-slidenav-active() {
+    -webkit-transform: @global-active-transform;
+    transform: @global-active-transform;
+}
+
+.hook-slidenav-contrast() {
+
+    // Effect style
+    &::after { background: @slidenav-contrast-effect-background; }
+
+}
 
 .hook-slidenav-contrast-hover() {}
 
@@ -27,4 +87,24 @@
 // Miscellaneous
 // ========================================================================
 
-.hook-slidenav-misc() {}
+.hook-slidenav-misc() {
+
+    // Effect on click event 'uk-ripple'
+    .uk-slidenav:active::after {
+        -webkit-animation: @global-ripple-animation;
+        animation: @global-ripple-animation;
+    }
+
+    // Icon font
+    .uk-slidenav-previous::before,
+    .uk-slidenav-next::before { font-family: @global-theme-icon-font-family; }
+
+    // Switching icons for RTL languages
+    html[dir="rtl"] body {
+
+        .uk-slidenav-previous::before { content: @slidenav-position-next; }
+        .uk-slidenav-next::before { content: @slidenav-previous-icon; }
+        
+    }
+
+}

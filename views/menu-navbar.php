@@ -3,7 +3,20 @@
 <?php endif ?>
 
     <?php foreach ($root->getChildren() as $node) : ?>
-    <li class="<?= $node->hasChildren() ? 'uk-parent' : '' ?><?= $node->get('active') ? ' uk-active' : '' ?>" <?= ($root->getDepth() === 0 && $node->hasChildren()) ? 'data-uk-dropdown':'' ?>>
+
+    <?php
+
+        $dropdown = ($root->getDepth() === 0 && $node->hasChildren());
+
+        if ($dropdown) {
+            $settings = [];
+            $settings['pos'] = $params['header_layout'] !== 'default' ? "bottom-center" : '';
+            $dropdown = 'data-uk-dropdown=\''.json_encode($settings).'\'';
+        }
+
+    ?>
+
+    <li class="<?= $node->hasChildren() ? 'uk-parent' : '' ?><?= $node->get('active') ? ' uk-active' : '' ?>" <?= $dropdown ?>>
         <a href="<?= $node->getUrl() ?>"><?= $node->title ?></a>
 
         <?php if ($node->hasChildren()) : ?>

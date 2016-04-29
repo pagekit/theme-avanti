@@ -7,48 +7,49 @@
 // Variables
 // ========================================================================
 
+@form-padding:                                  @form-padding-vertical @form-padding-horizontal;
+@form-small-padding:                            @form-small-padding-vertical @form-small-padding-horizontal;
+@form-large-padding:                            @form-large-padding-vertical @form-large-padding-horizontal;
 @form-height:                                   @global-height;
+@form-small-height:                             @global-height-small;
+@form-large-height:                             @global-height-large;
+
+@form-small-font-size:                          10px;
+@form-large-font-size:                          13px;
+
 @form-border:                                   @global-border;
+@form-border-width:                             @global-border-width;
 @form-background:                               @global-background;
 @form-color:                                    @global-color;
-
-@form-focus-border:                             @global-primary-background;
+@form-placeholder-color:                        @global-muted-color;
+@form-focus-border:                             @global-inverted-background;
 @form-focus-background:                         @global-background;
-@form-focus-color:                              @global-color;
+@form-focus-color:                              @global-highlight-color;
 
 @form-disabled-border:                          @global-border;
-@form-disabled-background:                      #fafafa;
+@form-disabled-background:                      rgba(0,0,0,0);
 @form-disabled-color:                           @global-muted-color;
 
-@form-placeholder-color:                        @global-muted-color;
+@form-danger-border:                            @global-danger-background;
+@form-danger-background:                        @form-background;
+@form-danger-color:                             @global-danger-color;
+
+@form-success-border:                           @global-success-background;
+@form-success-background:                       @form-background;
+@form-success-color:                            @global-success-color;
+
+@form-blank-border:                             @global-inverted-background;
+
+@form-mini-width:                               80px;
+
+@form-legend-border:                            @global-border;
+@form-legend-border-width:                      @global-border-width;
+@form-legend-font-size:                         round((@global-font-size * 1.28)); // 18px
+@form-legend-line-height:                       round((@form-legend-font-size * 1.66)); // 30px
 
 @form-gutter:                                   @global-margin;
 
-@form-legend-border:                            @global-border;
-@form-legend-font-size:                         round((@global-font-size * 1.28)); // 18px / 20px
-@form-legend-line-height:                       round((@form-legend-font-size * 1.68)); // 30px / 34px
-
-@form-small-height:                             @global-height-small;
-@form-large-height:                             @global-height-large;
-@form-small-font-size:                          round((@global-font-size * 0.85)); // 12px / 14px
-@form-large-font-size:                          round((@global-font-size * 1.14)); // 16px / 18px
-
-@form-danger-border:                            @global-danger-background;
-@form-danger-background:                        @global-background;
-@form-danger-color:                             @global-color;
-
-@form-success-border:                           @global-success-background;
-@form-success-background:                       @global-background;
-@form-success-color:                            @global-color;
-
-@form-blank-border:                             @global-border;
-
-@form-stacked-margin-bottom:                    10px;
-@form-stacked-font-weight:                      normal;
-
-@form-horizontal-label-margin-top:              7px;
-@form-horizontal-controls-text-padding-top:     7px;
-
+@form-icon-width:                               @global-height;
 @form-icon-font-size:                           @global-font-size;
 @form-icon-color:                               @global-muted-color;
 
@@ -56,14 +57,38 @@
 // New
 //
 
-@form-stacked-font-size:                        round((@global-font-size * 0.85)); // 12px / 14px
-@form-stacked-line-height:                      round((@form-stacked-font-size *  1.46)); // 18px / 20px
+@form-font-family:                              @global-alternate-font-family;
+@form-font-size:                                11px;
+@form-text-transform:                           @global-text-transform;
+@form-letter-spacing:                           @global-letter-spacing;
+
+@form-border-radius:                            @global-border-radius;
+@form-padding-horizontal:                       (@form-padding-vertical * 2);
+@form-padding-vertical:                         5px;
+@form-small-border-radius:                      @global-border-radius;
+@form-small-padding-horizontal:                 (@form-small-padding-vertical * 2);
+@form-small-padding-vertical:                   @form-padding-vertical;
+@form-large-border-radius:                      @global-border-radius;
+@form-large-padding-horizontal:                 (@form-large-padding-vertical * 2);
+@form-large-padding-vertical:                   @form-padding-vertical;
+
+@form-textarea-border-radius:                   @global-border-radius;
+
+@form-autofill-border:                          @form-border;
 
 
 // Component
 // ========================================================================
 
-.hook-form() {}
+.hook-form() {
+    position: relative;
+    border-radius: @form-border-radius;
+    font-family: @form-font-family;
+    font-size: @form-font-size;
+    font-weight: inherit;
+    text-transform: @form-text-transform;
+    letter-spacing: @form-letter-spacing;
+}
 
 // Focus state
 .hook-form-focus() {}
@@ -102,10 +127,7 @@
 // Sub-object: `uk-form-label`
 // ========================================================================
 
-.hook-form-stacked-label() {
-    font-size: @form-stacked-font-size;
-    line-height: @form-stacked-line-height;
-}
+.hook-form-stacked-label() {}
 
 .hook-form-horizontal-label() {}
 
@@ -115,9 +137,42 @@
 
 .hook-form-misc() {
 
-    .uk-form-help-block {
-        color: @global-muted-color;
-        font-style: italic;
+    // Padding for textarea and select element
+    .uk-form textarea,
+    .uk-form select {
+        padding: @form-padding-horizontal;
+        border-radius: @form-textarea-border-radius;
+    }
+
+    // Adding more space to the label
+    .uk-form-label + input,
+    .uk-form-label + textarea { margin-top: 5px !important; }
+
+    // Size modifiers
+    select.uk-form-small,
+    textarea.uk-form-small,
+    input[type].uk-form-small,
+    input:not([type]).uk-form-small { border-radius: @form-small-border-radius; }
+
+    select.uk-form-large,
+    textarea.uk-form-large,
+    input[type].uk-form-large,
+    input:not([type]).uk-form-large  { border-radius: @form-large-border-radius; }
+
+    // Form icon
+    .uk-form-icon > [class*='uk-icon-'] { z-index: 1; }
+
+    // Reseting -webkit- autofill styling in Chrome browser
+    .uk-form input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px @form-height @form-background inset !important;
+        border-color: @form-autofill-border !important;
+        -webkit-text-fill-color: @form-placeholder-color;
+    }
+
+    .uk-form input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px @form-height @form-focus-background inset !important;
+        border-color: @form-focus-border !important;
+        -webkit-text-fill-color: @form-focus-color;
     }
 
 }

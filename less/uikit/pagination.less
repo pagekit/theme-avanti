@@ -7,21 +7,40 @@
 // Variables
 // ========================================================================
 
+@pagination-font-size:                          12px;
+@pagination-margin-left:                        5px;
 @pagination-padding-vertical:                   5px;
-@pagination-padding-horizontal:                 5px;
-@pagination-line-height:                        @global-line-height;
-@pagination-background:                         transparent;
+@pagination-padding-horizontal:                 @pagination-padding-vertical;
+@pagination-line-height:                        30px;
+
+@pagination-background:                         rgba(0,0,0,0);
 @pagination-color:                              @global-muted-color;
-@pagination-hover-background:                   transparent;
-@pagination-hover-color:                        @global-dark-color;
-@pagination-onclick-background:                 transparent;
-@pagination-onclick-color:                      @global-dark-color;
 
-@pagination-active-background:                  transparent;
-@pagination-active-color:                       @global-dark-color;
+@pagination-hover-background:                   @global-light-background;
+@pagination-hover-color:                        @global-color;
 
-@pagination-disabled-background:                transparent;
+@pagination-onclick-background:                 @global-primary-background;
+@pagination-onclick-color:                      @global-contrast-color;
+
+@pagination-active-background:                  rgba(0,0,0,0);
+@pagination-active-color:                       @global-highlight-color;
+
+@pagination-disabled-background:                rgba(0,0,0,0);
 @pagination-disabled-color:                     @global-muted-color;
+
+//
+// New
+//
+
+@pagination-border-radius:                      ((@pagination-line-height + (@pagination-padding-vertical * 2)) / 2);
+@pagination-border-width:                       @global-border-width;
+
+@pagination-font-family:                        @global-alternate-font-family;
+@pagination-text-transform:                     @global-text-transform;
+@pagination-letter-spacing:                     @global-letter-spacing;
+
+@pagination-effect-width:                      60px;
+@pagination-effect-background:                 fade(@pagination-onclick-background, 15%);
 
 
 // Component
@@ -31,16 +50,43 @@
 // Items
 //
 
-.hook-pagination-item() {}
+.hook-pagination-item() {
+    font-family: @pagination-font-family;
+    border-radius: @pagination-border-radius;
+    text-transform: @pagination-text-transform;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+
+}
 
 // Link
-.hook-pagination-link() {}
+
+.hook-pagination-link() {
+
+    position: relative;
+
+    // Effect style
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -(@pagination-effect-width / 2) 0 0 -(@pagination-effect-width / 2);
+        width: @pagination-effect-width;
+        height: @pagination-effect-width;
+        border-radius: 50%;
+        content: '';
+        opacity: 0;
+        background: @pagination-effect-background;
+    }
+
+}
 
 .hook-pagination-link-hover() {}
 
 .hook-pagination-link-active() {}
 
 // Active
+
 .hook-pagination-active() {}
 
 // Disabled
@@ -52,7 +98,17 @@
 
 .hook-pagination-misc() {
 
-    .uk-pagination-previous > *,
-    .uk-pagination-next > * { padding: @pagination-padding-vertical 0 !important; }
+    // Effect on click event 'uk-ripple'
+    .uk-pagination > li > a:active::after {
+        -webkit-animation: @global-ripple-animation;
+        animation: @global-ripple-animation;
+    }
+
+    // Next + previous items
+    .uk-pagination-next > *,
+    .uk-pagination-previous > * {
+        padding: @pagination-padding-vertical @pagination-border-radius !important;
+        letter-spacing: @pagination-letter-spacing;
+    }
 
 }

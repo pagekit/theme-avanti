@@ -8,24 +8,33 @@
 // ========================================================================
 
 @utility-container-padding-horizontal:          @global-grid-gutter;
+
 @utility-container-large-padding-horizontal:    @global-grid-gutter-large;
 
 @utility-align-horizontal:                      @global-margin;
 @utility-align-vertical:                        @global-margin;
 
 @utility-margin:                                @global-margin;
+@utility-margin-large:                          @global-margin-large;
+@utility-margin-small:                          @global-margin-small;
 
-@utility-border-rounded:                        3px;
+@utility-heading-large-small-font-size:         @global-h1-font-size;
+@utility-heading-large-small-line-height:       @global-h1-line-height;
 
-@utility-heading-large-small-font-size:         round((@global-font-size * 2.6)); // 42px
-@utility-heading-large-small-line-height:       round((@utility-heading-large-small-font-size * 1.154)); // 48px
-@utility-heading-large-font-size:               round((@global-font-size * 3.375)); // 54px
-@utility-heading-large-line-height:             round((@utility-heading-large-font-size * 1.185)); // 64px
+@utility-heading-large-font-size:               48px;
+@utility-heading-large-line-height:             56px;
 
-@utility-link-muted-color:                      @global-color;
+@utility-link-muted-color:                      @global-muted-color;
 @utility-link-muted-hover-color:                @global-color;
 
 @utility-scrollable-box-border:                 @global-border;
+
+//
+// New
+//
+
+@utility-font-rendering-webkit:                 antialiased;
+@utility-font-rendering-moz:                    grayscale;
 
 
 // Container
@@ -37,7 +46,7 @@
 // Scrollable
 // ========================================================================
 
-.hook-scrollable-box() { border-radius: 3px; }
+.hook-scrollable-box() { border-radius: @global-border-radius; }
 
 
 // Miscellaneous
@@ -45,11 +54,15 @@
 
 .hook-utility-misc() {
 
-    /* Phones and smaller */
-    @media (max-width: @breakpoint-small-max) {
-
-        .uk-container { padding: 0 15px; }
-
+    // Font smoothing
+    // Example use case: .class:extend(.uk-font-smoothing all){};
+    .uk-font-smoothing {
+        -webkit-font-smoothing: @utility-font-rendering-webkit;
+        -moz-osx-font-smoothing: @utility-font-rendering-moz;
+        text-rendering: optimizeLegibility;
     }
+
+    // Font rendering for notouch devices
+    .uk-notouch:extend(.uk-font-smoothing all){};
 
 }

@@ -1,0 +1,195 @@
+@import 'https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic';
+
+
+// Global variables
+// ========================================================================
+
+//
+// Text
+//
+
+@global-color:                                  #777;
+@global-muted-color:                            #555;
+@global-highlight-color:                        #fff;
+
+@global-link-color:                             #af9a7d;
+@global-link-hover-color:                       darken(@global-link-color, 20%);
+
+@global-contrast-color:                         #fff;
+
+@global-primary-color:                          @global-link-color;
+@global-primary-link-color:                     #625645;
+@global-primary-link-hover-color:               lighten(@global-link-hover-color, 10%);
+
+@global-secondary-color:                        #555;
+@global-secondary-highlight-color:              @global-highlight-color;
+@global-secondary-inverted-color:               @global-muted-color;
+
+@global-success-color:                          #5e9a61;
+@global-warning-color:                          #ce9252;
+@global-danger-color:                           #9f554d;
+
+//
+// Typography
+//
+
+@global-font-family:                            'Merriweather', Times New Roman, serif;
+@global-alternate-font-family:                  'Merriweather', Times New Roman, serif;
+
+@global-font-size:                              14px;
+@global-line-height:                            22px;
+@global-font-weight:                            300;
+@global-bold-font-weight:                       400;
+@global-text-transform:                         uppercase;
+@global-letter-spacing:                         2px;
+@global-heading-font-weight:                    300;
+@global-heading-text-transform:                 none;
+
+//
+// Backgrounds & Borders
+//
+
+@global-background:                             #1b1b1b;
+@global-light-background:                       #1f1f1f;
+@global-dark-background:                        #181818;
+@global-secondary-background:                   #141414;
+@global-inverted-background:                    #0f0f0f;
+
+@global-default-background:                     @global-light-background;
+@global-default-hover-background:               lighten(@global-default-background, 3%);
+@global-default-active-background:              @global-dark-background;
+@global-default-active-shadow:                  rgba(0,0,0,0.3);
+
+@global-primary-background:                     #af9a7d;
+@global-success-background:                     #5e9a61;
+@global-warning-background:                     #ce9252;
+@global-danger-background:                      #9f554d;
+
+@global-border:                                 rgba(255,255,255,0.04);
+
+//
+// Misc
+//
+
+@global-style:                                  'noble';
+
+
+// Component variables
+// ========================================================================
+
+//
+// Base
+//
+
+@base-heading-font-family:                      'Merriweather', Times New Roman, serif;
+@base-alternate-heading-font-family:            'Merriweather', Times New Roman, serif;
+
+@base-alternate-heading-font-weight:            @global-bold-font-weight;
+
+@base-blockquote-icon-size:                     90px;
+@base-blockquote-icon-offset:                   -(round(@base-blockquote-icon-size - 20));
+
+//
+// Close
+//
+
+@close-alt-background:                          @global-contrast-color;
+@close-alt-color:                               @global-inverted-background;
+@close-alt-hover-background:                    @global-primary-background;
+@close-alt-hover-color:                         @close-alt-color;
+
+//
+// Contrast
+//
+
+@contrast-color:                                fade(@global-contrast-color, 70%);
+@contrast-inverted-color:                       rgba(0,0,0,0.6);
+@contrast-highlight-color:                      @global-contrast-color;
+
+//
+// Dotnav
+//
+
+@dotnav-onclick-background:                     @global-highlight-color;
+@dotnav-border:                                 fade(@global-highlight-color, 20%);
+@dotnav-hover-border:                           @global-highlight-color;
+@dotnav-onclick-border:                         @global-highlight-color;
+@dotnav-active-border:                          @global-highlight-color;
+
+//
+// Dropdown
+//
+
+@dropdown-shadow:                               0 1px 3px rgba(0,0,0,0.15);
+@dropdown-navbar-shadow:                        @dropdown-shadow;
+
+//
+// Form
+//
+
+@form-focus-border:                             lighten(@global-light-background, 10%);
+
+//
+// Nav
+//
+
+@nav-offcanvas-color:                           lighten(@global-secondary-color, 10%);
+
+//
+// Navbar
+//
+
+@navbar-background:                             @global-inverted-background;
+
+//
+// Overlay
+//
+@overlay-panel-color:                           @global-contrast-color;
+@overlay-gradient-top:                          fade(@global-light-background, 40%);
+@overlay-gradient-bottom:                       fade(@global-light-background, 100%);
+
+//
+// Panel
+//
+
+@panel-box-hover-background:                    lighten(@panel-box-background, 2%);
+@panel-box-hover-shadow:                        0 15px 45px rgba(0,0,0,0.3), 0 5px 20px rgba(0,0,0,0.3);
+@panel-box-primary-hover-shadow:                0 15px 45px rgba(0,0,0,0.3), 0 5px 20px rgba(0,0,0,0.3);
+@panel-box-secondary-hover-background:          @global-light-background;
+@panel-box-secondary-hover-shadow:              0 15px 45px rgba(0,0,0,0.3), 0 5px 20px rgba(0,0,0,0.3);
+@panel-hover-hover-background:                  @global-light-background;
+@panel-hover-shadow:                            0 15px 45px rgba(0,0,0,0.3), 0 5px 20px rgba(0,0,0,0.3);
+
+//
+// Search
+//
+
+@dropdown-search-background:                    @dropdown-navbar-background;
+@dropdown-search-color:                         @navbar-nav-color;
+
+@search-dropdown-shadow:                        @dropdown-navbar-shadow;
+
+//
+// Slidenav
+//
+
+@slidenav-color:                                @global-color;
+@slidenav-hover-color:                          @global-highlight-color;
+@slidenav-active-color:                         @global-highlight-color;
+
+//
+// Tab
+//
+
+@tab-hover-border:                              @global-primary-background;
+
+
+// Theme variables
+// ========================================================================
+
+//
+// Widgetkit Avanti Slideshow
+//
+
+// Number Nav
+@theme-numnav-active-color:                     @global-primary-color;

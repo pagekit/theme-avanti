@@ -7,27 +7,39 @@
 // Variables
 // ========================================================================
 
-@icon-hover-color:                              @global-muted-color;
-@icon-hover-hover-color:                        @global-color;
+@icon-small-font-size:                          120%;
 
+@icon-hover-color:                              @global-contrast-color;
+@icon-hover-hover-color:                        fade(@icon-hover-color, 60%);
+
+@icon-button-width:                             42px;
 @icon-button-height:                            @icon-button-width;
-@icon-button-background:                        @global-primary-background;
-@icon-button-font-size:                         round((@icon-button-width * 0.5));
-@icon-button-color:                             @global-contrast-color;
+@icon-button-border-radius:                     50%;
+@icon-button-font-size:                         20px;
 
-@icon-button-hover-background:                  @global-primary-hover-background;
-@icon-button-hover-color:                       @global-contrast-color;
-
-@icon-button-active-background:                 @global-primary-active-background;
+@icon-button-background:                        rgba(0,0,0,0);
+@icon-button-color:                             @global-highlight-color;
+@icon-button-hover-background:                  @global-light-background;
+@icon-button-hover-color:                       @global-highlight-color;
+@icon-button-active-background:                 @global-inverted-background;
 @icon-button-active-color:                      @global-contrast-color;
+
+//
+// New
+//
+
+@icon-button-margin-horizontal:                 4px;
+
+@icon-button-effect-width:                      60px;
+@icon-button-effect-background:                 fade(@icon-button-active-background, 15%);
 
 
 // Modifier: `uk-icon-hover`
 // ========================================================================
 
 .hook-icon-hover() {
-    -webkit-transition: color 0.05s linear;
-    transition: color 0.05s linear;
+    -webkit-transition: color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out;
 }
 
 .hook-icon-hover-hover() {}
@@ -36,7 +48,30 @@
 // Modifier: `uk-icon-button`
 // ========================================================================
 
-.hook-icon-button() {}
+.hook-icon-button() {
+
+    position: relative;
+    margin: @icon-button-margin-horizontal;
+    overflow: visible;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    // Effect style
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: '';
+        margin: -(@icon-button-effect-width / 2) 0 0 -(@icon-button-effect-width / 2);
+        width: @icon-button-effect-width;
+        height: @icon-button-effect-width;
+        border-radius: 50%;
+        background: @icon-button-effect-background;
+        opacity: 0;
+    }
+
+}
 
 // Hover
 .hook-icon-button-hover() {}
@@ -48,4 +83,12 @@
 // Miscellaneous
 // ========================================================================
 
-.hook-icon-misc() {}
+.hook-icon-misc() {
+
+    // Effect on click event 'uk-ripple'
+    .uk-icon-button:active::after {
+        -webkit-animation: @global-ripple-animation;
+        animation: @global-ripple-animation;
+    }
+
+}

@@ -7,30 +7,32 @@
 // Variables
 // ========================================================================
 
-@tooltip-z-index:                               @global-z-index + 30;
-@tooltip-background:                            #666;
-
+@tooltip-z-index:                               (@global-z-index + 30);
+@tooltip-padding-vertical:                      8px;
+@tooltip-padding-horizontal:                    (@tooltip-padding-vertical * 2);
+@tooltip-background:                            @global-primary-background;
 @tooltip-color:                                 @global-contrast-color;
-@tooltip-font-size:                             round((@global-font-size * 0.85)); // 12px / 14px
-@tooltip-line-height:                           round((@tooltip-font-size * 1.46)); // 18px / 20px
+
+@tooltip-font-size:                             13px;
+@tooltip-line-height:                           18px;
+
+//
+// New
+//
+
+@tooltip-border-radius:                         @global-border-radius;
 
 
 // Component
 // ========================================================================
 
 .hook-tooltip() {
-    border-radius: 3px;
-    opacity: 0;
-    -webkit-transition: opacity 0.15s linear;
-    transition: opacity 0.15s linear;
+    border-radius: @tooltip-border-radius;
+    font-weight: inherit;
 }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-tooltip-misc() {
-
-    .uk-tooltip.uk-active { opacity: 1; }
-
-}
+.hook-tooltip-misc() {}

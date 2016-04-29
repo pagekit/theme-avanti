@@ -7,28 +7,65 @@
 // Variables
 // ========================================================================
 
-@subnav-margin-horizontal:                      20px;
-@subnav-color:                                  @global-color;
-@subnav-hover-color:                            @global-dark-color;
-@subnav-active-color:                           @global-dark-color;
+@subnav-margin-horizontal:                      15px;
+@subnav-margin-vertical:                        round(@subnav-margin-horizontal / 2);
 
+@subnav-color:                                  @global-link-color;
+@subnav-hover-color:                            @global-highlight-color;
+@subnav-active-color:                           @global-highlight-color;
+
+@subnav-line-border-height:                     12px;
 @subnav-line-border:                            @global-border;
+@subnav-line-border-width:                      1px;
 
-@subnav-pill-hover-background:                  @global-default-hover-background;
-@subnav-pill-hover-color:                       @global-color;
+@subnav-pill-padding-vertical:                  5px;
+@subnav-pill-padding-horizontal:                round(@subnav-pill-padding-vertical * 3);
+
+@subnav-pill-color:                             @global-color;
+@subnav-pill-hover-background:                  @global-light-background;
+@subnav-pill-hover-color:                       @global-highlight-color;
 @subnav-pill-active-background:                 @global-primary-background;
 @subnav-pill-active-color:                      @global-contrast-color;
 
 @subnav-disabled-color:                         @global-muted-color;
 
+//
+// New
+//
+
+@subnav-font-family:                            @global-alternate-font-family;
+@subnav-font-size:                              11px;
+@subnav-line-height:                            24px;
+@subnav-text-transform:                         @global-text-transform;
+@subnav-letter-spacing:                         @global-letter-spacing;
+
+@subnav-pill-border-radius:                     @global-border-radius;
+@subnav-pill-onclick-background:                @global-inverted-background;
+@subnav-pill-onclick-color:                     @global-contrast-color;
+
 
 // Component
 // ========================================================================
 
-.hook-subnav() {}
+//
+// Items
+//
 
+.hook-subnav() {
+    font-family: @subnav-font-family;
+    font-size: @subnav-font-size;
+    font-weight: @global-font-weight;
+    line-height: @subnav-line-height;
+    text-transform: @subnav-text-transform;
+    letter-spacing: @subnav-letter-spacing;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
+
+// Hover
 .hook-subnav-hover() {}
 
+// Active
 .hook-subnav-active() {}
 
 
@@ -41,10 +78,12 @@
 // Modifier: `uk-subnav-pill`
 // ========================================================================
 
-.hook-subnav-pill() {}
+.hook-subnav-pill() { border-radius: @subnav-pill-border-radius; }
 
+// Hover
 .hook-subnav-pill-hover() {}
 
+// Active
 .hook-subnav-pill-active() {}
 
 
@@ -57,4 +96,12 @@
 // Miscellaneous
 // ========================================================================
 
-.hook-subnav-misc() {}
+.hook-subnav-misc() {
+
+    // uk-subnav-pill onclick event
+    .uk-subnav-pill > li > a:active {
+        background: @subnav-pill-onclick-background;
+        color: @subnav-pill-onclick-color;
+    }
+
+}

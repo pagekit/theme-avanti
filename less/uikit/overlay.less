@@ -7,11 +7,19 @@
 // Variables
 // ========================================================================
 
-@overlay-panel-color:                           @global-contrast-color;
+@overlay-panel-padding:                         @global-margin-large;
+@overlay-panel-background:                      fade(@global-light-background, 50%);
+@overlay-panel-color:                           @global-highlight-color;
 
-@overlay-icon:                                  "";
-@overlay-icon-size:                             34px;
-@overlay-icon-color:                            @global-contrast-color;
+@overlay-icon:                                  "\e114";
+@overlay-icon-size:                             24px;
+@overlay-icon-color:                            @global-highlight-color;
+
+//
+// New
+//
+
+@overlay-panel-title-color:                     @global-highlight-color;
 
 
 // Sub-object `uk-overlay-panel`
@@ -26,23 +34,23 @@
 .hook-overlay-background() {}
 
 
-// Sub-object `uk-overlay-image`
-// ========================================================================
-
-.hook-overlay-image() {}
-
-
 // Sub-object `uk-overlay-icon`
 // ========================================================================
 
-.hook-overlay-icon() {
-    height: 34px;
-    width: 34px;
-    background: url("@{global-image-path}/overlay-plus.svg") 0 0 no-repeat;
-}
+.hook-overlay-icon() { font-family: @global-theme-icon-font-family; }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-overlay-misc() {}
+.hook-overlay-misc() {
+
+    // Title contrast-color
+    .uk-overlay-panel h1,
+    .uk-overlay-panel h2,
+    .uk-overlay-panel h3,
+    .uk-overlay-panel h4,
+    .uk-overlay-panel h5,
+    .uk-overlay-panel h6 { color: @overlay-panel-title-color; }
+
+}
