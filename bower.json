@@ -1,0 +1,7 @@
+{
+  "name": "theme-avanti",
+  "dependencies": {
+    "uikit": "#master"
+  },
+  "private": true
+}
