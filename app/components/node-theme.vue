@@ -57,9 +57,21 @@
                 <p class="uk-form-controls-condensed">
                     <select id="form-hero-blend" class="uk-form-width-large" v-model="node.theme.hero_blend">
                         <option value="">{{ 'None' | trans }}</option>
-                        <option value="muliply">{{ 'Multiply' | trans }}</option>
-                        <option value="soft-light">{{ 'Soft Light' | trans }}</option>
+                        <option value="multiply">{{ 'Multiply' | trans }}</option>
+                        <option value="screen">{{ 'Screen' | trans }}</option>
+                        <option value="overlay">{{ 'Overlay' | trans }}</option>
+                        <option value="darken">{{ 'Darken' | trans }}</option>
+                        <option value="lighten">{{ 'Lighten' | trans }}</option>
+                        <option value="color-dodge">{{ 'Color Dodge' | trans }}</option>
+                        <option value="color-burn">{{ 'Color Burn' | trans }}</option>
                         <option value="hard-light">{{ 'Hard Light' | trans }}</option>
+                        <option value="soft-light">{{ 'Soft Light' | trans }}</option>
+                        <option value="difference">{{ 'Difference' | trans }}</option>
+                        <option value="exclusion">{{ 'Exclusion' | trans }}</option>
+                        <option value="hue">{{ 'Hue' | trans }}</option>
+                        <option value="saturation">{{ 'Saturation' | trans }}</option>
+                        <option value="color">{{ 'Color' | trans }}</option>
+                        <option value="luminosity">{{ 'Luminosity' | trans }}</option>
                     </select>
                 </p>
                 <p class="uk-form-help-block">{{ 'Select a background blend mode.' | trans }}</p>

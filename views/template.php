@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $view->render('head') ?>
         <?php $view->style('theme', $params['style'] ? 'theme:css/styles/'.$params['style'].'/theme.css' : 'theme:css/theme.css') ?>
-        <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax', 'uikit-slider', 'uikit-grid']) ?>
+        <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax', 'uikit-slider', 'uikit-grid', 'uikit-accordion']) ?>
     </head>
 
     <body <?= $params['classes.body'] ?>>
@@ -20,7 +20,7 @@
 
             <?php if ($view->position()->exists('hero')) : ?>
             <div id="tm-hero" class="tm-hero tm-header-container uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle <?= $params['classes.hero'] ?>" <?= $params['hero_image'] ? "style=\"background-image: url('{$view->url($params['hero_image'])}');\"" : '' ?> <?= $params['classes.parallax'] ?>>
-                <div class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
+                <div class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
 
                     <section class="uk-grid uk-grid-match" data-uk-grid-margin>
                         <?= $view->position('hero', 'position-grid.php') ?>

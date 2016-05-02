@@ -164,6 +164,10 @@ return [
                 $classes['hero'] .= ' uk-contrast';
             }
 
+            if ($params['hero_style']) {
+                $classes['hero'] .= ' '.$params['hero_style'];
+            }
+
             if ($params['hero_blend'] && $params['hero_image']) {
                 $classes['hero'] .= ' tm-background-blend-'.$params['hero_blend'];
             }
