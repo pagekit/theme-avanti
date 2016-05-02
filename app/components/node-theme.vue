@@ -46,6 +46,9 @@
                     <label><input type="checkbox" v-model="node.theme.hero_viewport"> {{ 'Full viewport height' | trans }}</label>
                 </p>
                 <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="node.theme.hero_width"> {{ 'Full Container Width' | trans }}</label>
+                </p>
+                <p class="uk-form-controls-condensed">
                     <select id="form-hero-style" class="uk-form-width-large" v-model="node.theme.hero_style">
                         <option value="uk-block-default">{{ 'Default' | trans }}</option>
                         <option value="uk-block-muted">{{ 'Muted' | trans }}</option>

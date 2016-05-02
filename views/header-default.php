@@ -1,6 +1,6 @@
 <nav class="tm-navbar-wrapper <?= $params['classes.header'] ?>" <?= $params['classes.sticky'] ?>>
 
-     <div class="tm-navbar uk-navbar">
+     <div class="tm-navbar uk-navbar tm-navbar-single">
 
          <div class="uk-container uk-container-center tm-navbar-container">
 

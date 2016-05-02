@@ -52,6 +52,7 @@ return [
         'hero_image' => '',
         'hero_style' => 'uk-block-default',
         'hero_blend' => '',
+        'hero_width' => false,
         'hero_viewport' => '',
         'hero_contrast' => '',
         'hero_parallax' => '',

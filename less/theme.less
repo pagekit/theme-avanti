@@ -143,13 +143,11 @@
 
 [v-cloak] { display: none; }
 
-/*
- * Force vertical scrollbar
- */
-
+// Force vertical scrollbar
 html { overflow-y: scroll; }
 
 
+// Calculations
 .tm-navbar-sticky .tm-hero-height { min-height: ~"calc(100vh - @{theme-navbar-container-height})"; }
 .tm-navbar-sticky .tm-hero > * { padding-top: @theme-navbar-container-height; }
 
@@ -229,6 +227,10 @@ html { overflow-y: scroll; }
 
 .tm-navbar-left{ left: @utility-container-padding-horizontal; }
 .tm-navbar-right { right: @utility-container-padding-horizontal; }
+
+// Logo
+// Putting the logo above the navbar
+.tm-navbar-single .tm-navbar-left { z-index: (@global-z-index + 11); }
 
 // Navbar modifier tm-navbar-centered for centered navbar template
 .tm-navbar-centered {
@@ -391,6 +393,9 @@ html { overflow-y: scroll; }
     text-decoration: none;
 }
 
+// Footer menu
+.tm-footer .uk-subnav { margin-bottom: 0; }
+
 // Footer Totop scroller (Warp Option)
 .tm-footer .tm-totop-scroller {
 
@@ -462,7 +467,7 @@ html { overflow-y: scroll; }
 }
 
 
-// Widgetkit
+// Modifier
 // ==========================================================================
 
 // Reducing the margins of title and content of a widget item
@@ -474,146 +479,7 @@ html { overflow-y: scroll; }
 }
 
 //
-// Widgetkit Avanti Slideshow 'tm-slideshow-avanti'
-//
-
-// uk-overlay-panel padding
-.tm-slideshow-avanti .uk-overlay-panel { padding: @theme-navbar-container-height-small @global-grid-gutter-large @global-grid-gutter-large @global-grid-gutter-large; }
-
-@media (min-width: @breakpoint-medium) {
-
-    // Adding more space when Sticky navbar is active
-    .uk-sticky-placeholder + .tm-header-container .uk-slideshow > li > .uk-overlay-panel { padding-top: @theme-navbar-container-sticky-height; }
-    .tm-navbar-centered-true .uk-sticky-placeholder + .tm-header-container .uk-slideshow > li > .uk-overlay-panel { padding-top: @theme-navbar-centered-container-sticky-height; }
-
-    // Slidenav position
-    .uk-sticky-placeholder + .tm-header-container .uk-slidenav-position .uk-slidenav { top: ~'calc(50% + (@{theme-navbar-container-sticky-height} / 2))'; }
-    // Slidenav position when navbar is cenetred
-    .tm-navbar-centered-true .uk-sticky-placeholder + .tm-header-container .uk-slidenav-position .uk-slidenav { top: ~'calc(50% + (@{theme-navbar-centered-container-sticky-height} / 2))'; }
-
-}
-
-@media (max-width: @breakpoint-small-max) {
-
-    // Adding more space when Sticky navbar is active
-    .uk-sticky-placeholder + .tm-header-container .uk-slideshow > li > .uk-overlay-panel,
-    .tm-navbar-centered-true .uk-sticky-placeholder + .tm-header-container .uk-slideshow > li > .uk-overlay-panel { padding-top: @theme-navbar-container-sticky-height-small; }
-
-    // Slidenav position
-    .tm-slideshow-avanti .uk-slidenav-position .uk-slidenav { display: none; }
-
-}
-
-// Content panel
-.tm-slideshow-content-panel {
-    padding-top: @global-grid-gutter-large;
-    padding-bottom: @global-grid-gutter-large;
-}
-
-// Number Nav
-.tm-numnav {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-left: -@theme-numnav-margin-horizontal;
-    margin-top: -@theme-numnav-margin-vertical;
-    padding: 0;
-    list-style: none;
-    counter-reset: section;
-}
-
-.tm-numnav > * {
-    -ms-flex: none;
-    -webkit-flex: none;
-    flex: none;
-    padding-left: @theme-numnav-margin-horizontal;
-    margin-top: @theme-numnav-margin-vertical;
-}
-
-.tm-numnav > * > * {
-    display: block;
-    box-sizing: content-box;
-    position: relative;
-    width:  @theme-numnav-height;
-    height:  @theme-numnav-height;
-    text-indent: 100%;
-    text-decoration: none !important; // needed for IE
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-// Number nav item
-.tm-numnav > * > *::before {
-    counter-increment: section;
-    content: "" counter(section) "";
-    display: block;
-    box-sizing: content-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: @theme-numnav-width;
-    height: @theme-numnav-height;
-    line-height: @theme-numnav-height;
-    color: @theme-numnav-color;
-    font-family: @theme-numnav-font-family;
-    font-size: @theme-numnav-font-size;
-    font-weight: @theme-numnav-font-weight;
-    text-align: center;
-    text-indent: 0;
-    text-transform: @theme-numnav-text-transform;
-    letter-spacing: @theme-numnav-letter-spacing;
-    cursor: pointer;
-    -webkit-transition: @global-transition;
-    transition: @global-transition;
-}
-
-.tm-numnav > *:not(:nth-child(1n+10)) > *::before { content: "0" counter(section) ""; }
-
-// Hover + Onclick
-.tm-numnav > * > *:hover::before,
-.tm-numnav > * > *:focus::before {
-    color: @theme-numnav-hover-color;
-    outline: none;
-}
-
-// Active
-.tm-numnav > * > *:active::before { color: @theme-numnav-onclick-color; }
-
-.tm-numnav > .uk-active > *::before {
-    color: @theme-numnav-active-color;
-    font-weight: @theme-numnav-active-font-weight;
-}
-
-// 'tm-numnav-contrast' modifier
-.tm-numnav-contrast > * > *::before { color: @theme-numnav-contrast-color; }
-.tm-numnav-contrast > * > *:hover::before,
-.tm-numnav-contrast > * > *:focus::before { color: @theme-numnav-contrast-hover-color; }
-.tm-numnav-contrast > * > *:active::before { color: @theme-numnav-contrast-onclick-color; }
-.tm-numnav-contrast > .uk-active > *::before { color: @theme-numnav-contrast-active-color; }
-
-//
-// Widgetkit Avanti Slideshow Panel
-//
-
-// Badge style + position
-.tm-slideshow-panel-avanti .tm-slideshow-panel-badge {
-    position: absolute;
-    top: @global-margin-large;
-    right: @global-margin-large;
-    z-index: 3;
-}
-
-// Badge position when media is aligned right
-.tm-slideshow-panel-avanti .uk-flex-order-last-large .tm-slideshow-panel-badge {
-    right: auto;
-    left: @global-margin-large;
-}
-
-//
-// Widgetkit Avanti Grid
+// Avanti Grid
 //
 
 // Adding a border and gutter
@@ -649,7 +515,7 @@ html { overflow-y: scroll; }
 }
 
 //
-// Widgetkit Gallery modifier 'tm-gallery-avanti'
+// Gallery modifier 'tm-gallery-avanti'
 //
 
 // Overlay background
