@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $view->render('head') ?>
         <?php $view->style('theme', $params['style'] ? 'theme:css/styles/'.$params['style'].'/theme.css' : 'theme:css/theme.css') ?>
-        <?php $view->script('theme', 'theme:js/animated-text.js', ['uikit']) ?>
         <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax', 'uikit-slider', 'uikit-grid', 'uikit-accordion']) ?>
     </head>
 
