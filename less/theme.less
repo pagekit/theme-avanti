@@ -734,8 +734,11 @@ html { overflow-y: scroll; }
 
 .tm-article-blog {
 
+    // Image
+    .tm-article-image { min-height: 360px; }
+
     // Blog image large (not left or right aligned)
-    .tm-article-image-large { max-height: 360px; }
+    .tm-article-image-large { max-height: 420px; }
 
     // Spacing to each other
     + .tm-article-blog {
@@ -744,13 +747,16 @@ html { overflow-y: scroll; }
     }
 
     // Title
-    .tm-article-blog .tm-article-title {
+    .tm-article-title {
         margin-top: @global-margin-small;
         margin-bottom: @global-margin-large;
     }
 
     // Meta
-    .tm-article-blog .tm-article-meta { margin-bottom: @global-margin-small; }
+    .tm-article-meta { margin-bottom: @global-margin-small; }
+
+    // Icon for comment link
+    .tm-button-comment::before { content: '\e076'; }
 
 }
 
@@ -760,22 +766,11 @@ html { overflow-y: scroll; }
     // Content
     .tm-article-blog .tm-article-content { padding: @global-margin @global-margin-extra-large 0 @global-margin-extra-large; }
 
-    // Tags
-    .tm-article-blog .tm-article-tags { padding: @global-margin @global-margin-extra-large 0 @global-margin-extra-large; }
-
     // Spacing to each other
     .tm-article-blog + .tm-article-blog {
         margin-top: @global-margin-extra-large;
         padding-top: @global-margin-extra-large;
     }
-
-    // WordPress Only for post edit
-    .tm-article-blog .tm-button-edit::before { content: '\e116'; }
-
-    // Icon for comment link
-    .tm-article-blog .tm-button-comment::before { content: '\e076'; }
-
-    .tm-article-blog .tm-socialbuttons { padding: @global-margin @global-margin-extra-large 0 @global-margin-extra-large; }
 
 }
 
