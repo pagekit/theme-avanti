@@ -84,32 +84,7 @@
 @theme-footer-totop-active-color:               @global-primary-color;
 
 //
-// Widgetkit Avanti Slideshow
-//
-
-// Number Nav
-@theme-numnav-margin-horizontal:                15px;
-@theme-numnav-margin-vertical:                  @theme-numnav-margin-horizontal;
-@theme-numnav-width:                            25px;
-@theme-numnav-height:                           @theme-numnav-width;
-@theme-numnav-font-family:                      @global-alternate-font-family;
-@theme-numnav-font-size:                        12px;
-@theme-numnav-font-weight:                      @global-font-weight;
-@theme-numnav-active-font-weight:               @global-font-weight;
-@theme-numnav-text-transform:                   @global-text-transform;
-@theme-numnav-letter-spacing:                   @global-letter-spacing;
-@theme-numnav-color:                            @global-muted-color;
-@theme-numnav-hover-color:                      @global-highlight-color;
-@theme-numnav-active-color:                     @global-highlight-color;
-@theme-numnav-onclick-color:                    @global-primary-color;
-
-@theme-numnav-contrast-color:                   fade(@global-contrast-color, 40%);
-@theme-numnav-contrast-hover-color:             fade(@global-contrast-color, 70%);
-@theme-numnav-contrast-active-color:            @global-contrast-color;
-@theme-numnav-contrast-onclick-color:           fade(@global-contrast-color, 70%);
-
-//
-// Widgetkit Avanti Grid
+// Avanti Grid
 //
 
 @theme-badge-muted-background:                  @global-light-background;
@@ -117,7 +92,7 @@
 @theme-grid-divider-border:                     @grid-divider-border;
 
 //
-// Widgetkit Gallery modifier 'tm-gallery-avanti'
+// Gallery modifier 'tm-gallery-avanti'
 //
 
 @theme-overlay-background:                      @global-light-background;
@@ -137,9 +112,8 @@
 @theme-overlay-secondary-color:                 @global-contrast-color;
 
 
-/* ========================================================================
-   Theme
- ========================================================================== */
+// Theme Layout
+// ========================================================================
 
 [v-cloak] { display: none; }
 
@@ -687,7 +661,7 @@ html { overflow-y: scroll; }
     .uk-panel-box-secondary,
     .uk-offcanvas-bar,
     .tm-navbar-dropdown {
-        background-image: url('../images/block/texture_grain.png');
+        background-image: url('@{global-image-path}/block/texture_grain.png');
         background-repeat: repeat;
     }
 
@@ -710,7 +684,7 @@ html { overflow-y: scroll; }
     .uk-badge,
     .uk-offcanvas-bar,
     .tm-navbar-dropdown {
-        background-image: url('../images/block/texture_grain.png');
+        background-image: url('@{global-image-path}/block/texture_grain.png');
         background-repeat: repeat;
     }
 
