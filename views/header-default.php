@@ -9,7 +9,6 @@
                 <a class="tm-logo uk-navbar-brand uk-flex uk-flex-middle" href="<?= $view->url()->get() ?>">
                     <?php if ($params['logo']) : ?>
                         <img class="tm-logo uk-responsive-height" src="<?= $this->escape($params['logo']) ?>" alt="">
-                        <img class="tm-logo-contrast uk-responsive-height" src="<?= ($params['logo_contrast']) ? $this->escape($params['logo_contrast']) : $this->escape($params['logo']) ?>" alt="">
                     <?php else : ?>
                         <?= $params['title'] ?>
                     <?php endif ?>
