@@ -17,7 +17,7 @@ var gulp       = require('gulp'),
     glob       = require('glob');
 
 // banner for the css files
-var banner = "/*! <%= data.title %> <%= data.version %> | (c) 2014 Pagekit | MIT License */\n";
+var banner = "/*! <%= data.title %> <%= data.version %> | <%= data.copyright %> | <%= data.license %> License */\n";
 
 gulp.task('default', ['compile', 'compile-styles']);
 
@@ -72,6 +72,6 @@ gulp.task('compile-styles', function() {
 /**
  * Watch for changes in files
  */
-gulp.task('watch', function (cb) {
+gulp.task('watch', function () {
     gulp.watch('**/*.less', ['compile', 'compile-styles']);
 });
