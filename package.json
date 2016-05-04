@@ -30,6 +30,7 @@
         "gulp-less": "^3.0.0",
         "gulp-rename": "^1.2.0",
         "gulp-util": "^3.0.4",
+        "gulp-concat": "^2.6.0",
         "merge-stream": "^0.1.7",
         "vue-hot-reload-api": "^1.2.0",
         "vue-html-loader": "^1.0.0",
