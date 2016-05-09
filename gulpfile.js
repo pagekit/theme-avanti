@@ -27,14 +27,11 @@ gulp.task('default', ['compile', 'compile-styles']);
  */
 gulp.task('compile', function () {
 
-    return gulp.src('less/theme.less', {base: __dirname})
-        .pipe(less({compress: true}))
+    return gulp.src(['less/theme.less', 'less/style.less'])
+        .pipe(concat('theme.less'))
+        .pipe(less({paths: 'less', compress: true}))
         .pipe(header(banner, { data: require('./package.json') }))
-        .pipe(rename(function (file) {
-            // the compiled less file should be stored in the css/ folder instead of the less/ folder
-            file.dirname = file.dirname.replace('less', 'css');
-        }))
-        .pipe(gulp.dest(__dirname));
+        .pipe(gulp.dest('css'));
 });
 
 
@@ -43,26 +40,21 @@ gulp.task('compile', function () {
  */
 gulp.task('compile-styles', function() {
 
-    var files = glob.sync('less/styles/*/style.less'),
+    var files = glob.sync('less/styles/*.less'),
         streams = [];
-
-    if (!fs.existsSync('css/styles')) {
-        fs.mkdir('css/styles');
-    }
 
     files.forEach(function(file) {
 
-        var dest = path.dirname(file).replace('less', 'css');
-
-        if (!fs.existsSync(dest)) {
-            fs.mkdirSync(dest);
-        }
+        var style = path.basename(file).replace('.less', '');
 
         streams.push( gulp.src(['less/theme.less', file])
             .pipe(concat('theme.less'))
             .pipe(less({paths: 'less', compress: true}))
             .pipe(header(banner, { data: require('./package.json') }))
-            .pipe(gulp.dest(dest)) );
+            .pipe(rename(function (file) {
+                file.basename = file.basename +'.'+ style;
+            }))
+            .pipe(gulp.dest('css')) );
     });
 
     return merge(streams);
