@@ -30,7 +30,7 @@ gulp.task('compile', function () {
     return gulp.src(['less/theme.less', 'less/style.less'])
         .pipe(concat('theme.less'))
         .pipe(less({paths: 'less', compress: true}))
-        .pipe(header(banner, { data: require('./package.json') }))
+        .pipe(header(banner, { data: require('./composer.json') }))
         .pipe(gulp.dest('css'));
 });
 
@@ -50,7 +50,7 @@ gulp.task('compile-styles', function() {
         streams.push( gulp.src(['less/theme.less', file])
             .pipe(concat('theme.less'))
             .pipe(less({paths: 'less', compress: true}))
-            .pipe(header(banner, { data: require('./package.json') }))
+            .pipe(header(banner, { data: require('./composer.json') }))
             .pipe(rename(function (file) {
                 file.basename = file.basename +'.'+ style;
             }))

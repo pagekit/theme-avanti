@@ -1,18 +1,5 @@
 {
-    "name": "pagekit-avanti",
-    "type": "pagekit-theme",
-    "version": "1.0.0",
-    "title": "Pagekit Avanti",
-    "description": "Pagekit Theme",
-    "license": "MIT",
-    "copyright": "(c) 2016 Pagekit",
-    "authors": [
-        {
-            "name": "Pagekit",
-            "email": "info@pagekit.com",
-            "homepage": "http://pagekit.com"
-        }
-    ],
+    "name": "pagekit-theme",
     "scripts": {
         "install": "bower install && gulp",
         "archive": "gulp && webpack -p && composer archive --format=zip"
