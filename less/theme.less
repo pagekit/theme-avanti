@@ -1,13 +1,9 @@
 @import "uikit/uikit.less";
 
-// Fontawesome
 @icon-font-path: "../../../../app/assets/uikit/fonts";
-
-// Theme Font
-@global-font-path: "../less/uikit/fonts";
-
-// Images
 @global-image-path: '../less/uikit/images';
+
+@global-font-path: "../less/uikit/fonts";
 
 
 // Theme variables
@@ -112,14 +108,14 @@
 @theme-overlay-secondary-color:                 @global-contrast-color;
 
 
-// Theme Layout
-// ========================================================================
+/* ========================================================================
+   Theme
+ ========================================================================== */
 
 [v-cloak] { display: none; }
 
 // Force vertical scrollbar
 html { overflow-y: scroll; }
-
 
 // Calculations
 .tm-navbar-sticky .tm-hero-height { min-height: ~"calc(100vh - @{theme-navbar-container-height})"; }
