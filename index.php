@@ -96,8 +96,8 @@ return [
         'logo_offcanvas' => '',
         'header_layout' => 'default',
         'header_sticky' => 'animated',
-        'footer_layout' => 'default',
-        'footer_fixed' => false,
+        'footer_layout' => 'centered',
+        'footer_fixed' => true,
         'totop_scroller' => true
 
     ],
