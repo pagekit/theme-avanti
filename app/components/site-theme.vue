@@ -33,6 +33,48 @@
             </div>
         </div>
 
+
+        <div class="uk-form-row">
+            <label for="form-navbar-layout" class="uk-form-label">{{ 'Navbar Layout' | trans }}</label>
+            <div class="uk-form-controls">
+               <select id="form-navbar-layout" class="uk-form-width-large" v-model="config.header_layout">
+                   <option value="default">{{ 'Single' | trans }}</option>
+                   <option value="centered">{{ 'Centered' | trans }}</option>
+               </select>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <label for="form-navbar-mode" class="uk-form-label">{{ 'Navbar Mode' | trans }}</label>
+            <div class="uk-form-controls">
+              <select id="form-navbar-mode" class="uk-form-width-large" v-model="config.header_sticky">
+                  <option value="">{{ 'None' | trans }}</option>
+                  <option value="sticky">{{ 'Sticky' | trans }}</option>
+                  <option value="animated">{{ 'Sticky and animated' | trans }}</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <label for="form-footer-layout" class="uk-form-label">{{ 'Footer' | trans }}</label>
+            <div class="uk-form-controls">
+                <select id="form-footer-layout" class="uk-form-width-large" v-model="config.footer_layout">
+                    <option value="default">{{ 'Single' | trans }}</option>
+                    <option value="centered">{{ 'Centered' | trans }}</option>
+                </select>
+                <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="config.footer_fixed"> {{ 'Fixed Footer' | trans }}</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <span class="uk-form-label">{{ 'To-top Scroller' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <label><input type="checkbox" v-model="config.totop_scroller"> {{ 'Enable a to-top scroller.' | trans }}</label>
+            </div>
+        </div>
+
     </div>
 
 </template>

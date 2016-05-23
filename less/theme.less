@@ -117,11 +117,14 @@
 // Force vertical scrollbar
 html { overflow-y: scroll; }
 
-// Calculations
-.tm-navbar-sticky .tm-hero-height { min-height: ~"calc(100vh - @{theme-navbar-container-height})"; }
-.tm-navbar-sticky .tm-hero > * { padding-top: @theme-navbar-container-height; }
+//
+// Blocks
+//
 
-.tm-navbar-centered-true .tm-hero-height { min-height: ~"calc(100vh - @{theme-navbar-centered-container-height})"; }
+.tm-hero-height { min-height: 100vh; }
+.tm-hero > * { padding-top: @theme-navbar-container-height; }
+
+// Calculations
 .tm-navbar-centered-true.tm-navbar-sticky .tm-hero > * { padding-top: @theme-navbar-centered-container-height; }
 
 .uk-block { &:extend(.uk-block-large all); }

@@ -56,11 +56,6 @@ return [
         'hero_viewport' => '',
         'hero_contrast' => '',
         'hero_parallax' => '',
-        'header_layout' => 'default',
-        'header_sticky' => 'animated',
-        'footer_layout' => 'default',
-        'footer_fixed' => false,
-        'totop_scroller' => true,
         'top_style' => 'uk-block-muted',
         'top_b_style' => 'uk-block-default',
         'top_c_style' => 'uk-block-muted',
@@ -98,7 +93,12 @@ return [
     'config' => [
 
         'style' => '',
-        'logo_offcanvas' => ''
+        'logo_offcanvas' => '',
+        'header_layout' => 'default',
+        'header_sticky' => 'animated',
+        'footer_layout' => 'default',
+        'footer_fixed' => false,
+        'totop_scroller' => true
 
     ],
 

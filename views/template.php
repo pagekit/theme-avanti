@@ -70,6 +70,18 @@
         </div>
         <?php endif ?>
 
+        <?php if ($view->position()->exists('top_d')) : ?>
+        <div id="tm-top-d" class="tm-top-d uk-block <?= $params['top_d_style'] ?>">
+            <div class="uk-container uk-container-center">
+
+                <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+                    <?= $view->position('top_d', 'position-grid.php') ?>
+                </section>
+
+            </div>
+        </div>
+        <?php endif ?>
+
         <div id="tm-main" class="tm-main uk-block <?= $params['main_style'] ?>">
             <div class="uk-container uk-container-center">
 
